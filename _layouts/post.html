@@ -3,9 +3,9 @@ layout: default
 ---
 
 <div id="contents">
-<h1><a href="{{ url }}">{{ title }}</a></h1>
-<span class="post-topics">[ {{ tags | sort | join: " "}} ]</span>
-<span class="blurb">{{ date }}</span>
+<h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+<span class="post-topics">[ {{ page.tags | sort | join: " "}} ]</span>
+<span class="blurb">{{ page.date }}</span>
 
 {{ content }}
 </div>
