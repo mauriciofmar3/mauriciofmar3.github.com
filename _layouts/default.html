@@ -1,7 +1,80 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
 <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width = 750" />
+    <meta name="author" content="Brian Gordon" />
+    <title>{{ page.title }}</title>
 </head>
 <body>
-	{{ content }}
+	<div id="page-wrapper">
+
+		<div id="site-title">
+			<a href="/posts">Basil Shkara</a>
+			<span class="blurb"></span>
+		</div>
+
+		<div id="navlist-wrapper">
+			<ul id="navlist">
+				<li><a id="archive-toggle" href="#">archive</a></li>
+				<li><a id="about-toggle" href="#">about</a></li>
+			</ul>
+		</div>
+
+		<div id="about" style="display:none">
+
+			<img src="/posts/images/me.jpg">
+			<div id="about-text">
+				I'm a software engineer working on mobile, desktop and web applications.
+				In a previous life I built and led the first mobile team inside of a major media organisation, writing most of their initial iOS applications and frameworks.
+				My software has been featured in the App Store, won industry awards and even appeared in Apple television commercials ("There's an app for that").
+				These days I'm happily independent, performing client work and working on my own software for the App Store.  I'm available for hire.
+				You can contact me via <a href="http://twitter.com/basilshkara">Twitter</a> or email (address is 'basil' at this domain).
+			</div>
+		</div>
+
+		<div id="archive" style="display:none">
+			<h1>Previous Posts</h1>
+
+				<ul>
+				
+					<li><span class="date">27 Oct 2010</span> &raquo; <a href="/posts/2010/10/27/automated-ota-ios-app-distribution.html">Automated OTA iOS App Distribution</a></li>
+				
+					<li><span class="date">05 Sep 2009</span> &raquo; <a href="/posts/2009/09/05/app-sales-machine.html">App Sales Machine - pulls, parses, stores and emails App Store reports</a></li>
+				
+					<li><span class="date">06 Jan 2009</span> &raquo; <a href="/posts/2009/01/06/using-the-llvm-clang-static-analyzer-for-iphone-apps.html">Using the LLVM/Clang Static Analyzer for iPhone apps</a></li>
+
+				
+					<li><span class="date">27 Dec 2008</span> &raquo; <a href="/posts/2008/12/27/overview-of-jekyll--a-static-site-generator-written-in-ruby.html">Overview of Jekyll - a static site generator written in Ruby</a></li>
+				
+				</ul>
+		</div>
+
+		{% for post in site.posts %}
+                {{ post.content }}
+        {% endfor %}
+
+
+		<div id="footer">
+			<div id="links">
+
+				<p>
+					<a href="http://twitter.com/basilshkara">twitter.com/basilshkara</a>
+					<br />
+					<a href="http://flickr.com/leetbaz">flickr.com/leetbaz</a>
+					<br />
+					<a href="http://github.com/baz">github.com/baz</a>
+				</p>
+
+			</div>
+			<div id="rss">
+				<p>
+					<a href="/posts/atom.xml"><img src="/posts/images/feed_icon.png"></a>
+				</p>
+			</div>
+		</div>
+
+	</div>
+
 </body>
 </html>
