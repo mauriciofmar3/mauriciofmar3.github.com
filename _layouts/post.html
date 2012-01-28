@@ -4,8 +4,8 @@ layout: default
 
 <div id="contents">
 <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-<span class="post-topics">[ {{ page.tags | sort | join: " "}} ]</span>
-<span class="blurb">{{ page.date }}</span>
+<span class="post-topics">{{ page.tags | sort | join: " "}}</span>
+<span class="blurb">{{ page.date | date_to_string}}</span>
 
 {{ content }}
 </div>

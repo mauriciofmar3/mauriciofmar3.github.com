@@ -8,7 +8,7 @@ title: Home page fix me
   {% assign first_post = site.posts.first %}
 
   <h1><a href="{{ first_post.url }}">{{ first_post.title }}</a></h1>
-  <span class="post-topics">[ {{ first_post.tags | sort | join: " "}} ]</span>
+  <span class="post-topics">{{ first_post.tags | sort | join: " "}}</span>
   <span class="blurb">{{ first_post.date | date_to_string}}</span>
 
   {{ first_post.content }}
