@@ -171,6 +171,7 @@ object {
 	margin-top: 1.5em;
 	padding-top: 1.5em;
 	border-top: solid #ccc;
+	border-bottom: solid #ccc;
 }
 
 /* Header */
