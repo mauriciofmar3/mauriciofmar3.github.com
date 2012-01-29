@@ -71,7 +71,7 @@ a {
 
 a:hover {
 	color: #06c;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 blockquote {
