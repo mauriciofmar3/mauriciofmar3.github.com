@@ -217,16 +217,16 @@ object {
 	font-size: 0.8em;
 }
 
-#footer #links {
+#footer #foot-left {
 	float: left;
 	margin-bottom: 2em;
 }
 
-#footer #rss {
+#footer #foot-right {
 	float: right;
 }
 
-#footer #rss a:hover {
+#footer #foot-right a:hover {
 	background-color: transparent;
 }
 
