@@ -72,7 +72,7 @@ a {
 a:hover {
 	background-color: #3875d7;
 	color: #f0f0f0;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 blockquote {

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home page fix me
+title: Brian Gordon's blog
 ---
 
 <div id="contents">
@@ -9,7 +9,7 @@ title: Home page fix me
 
   <h1><a href="{{ first_post.url }}">{{ first_post.title }}</a></h1>
   <span class="post-topics">{{ first_post.tags | sort | join: " "}}</span>
-  <span class="blurb">{{ first_post.date | date_to_string}}</span>
+  <span class="blurb">{{ first_post.date | date: "%d %B %Y" }}</span>
 
   {{ first_post.content }}
 
@@ -18,7 +18,7 @@ title: Home page fix me
 
       <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
       <span class="post-topics">{{ post.tags | sort | join: " "}}</span>
-      <span class="blurb">{{ post.date | date_to_string}}</span>
+      <span class="blurb">{{ post.date | date: "%d %B %Y" }}</span>
 
       {{ post.content }}
 
