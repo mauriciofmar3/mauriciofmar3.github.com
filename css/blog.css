@@ -223,6 +223,7 @@ object {
 
 #footer #foot-right {
 	float: right;
+	margin-bottom: 2em;
 }
 
 #footer #foot-right a:hover {
