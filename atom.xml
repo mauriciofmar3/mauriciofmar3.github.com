@@ -1,0 +1,29 @@
+---
+layout: nil
+---
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+  <title>briangordon.github.com</title>
+  <link href="http://briangordon.github.com/"/>
+  <link type="application/atom+xml" rel="self" href="http://briangordon.github.com/atom.xml"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://briangordon.github.com/</id>
+  <author>
+    <name>Brian Gordon</name>
+  </author>
+
+  {% for post in site.posts %}
+  <entry>
+    <id>http://briangordon.github.com{{ post.id }}</id>
+    <link type="text/html" rel="alternate" href="http://briangordon.github.com{{ post.url }}"/>
+    <title>{{ post.title }}</title>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <author>
+      <name>Brian Gordon</name>
+    </author>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+ 
+</feed>
