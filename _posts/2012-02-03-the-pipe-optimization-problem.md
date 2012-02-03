@@ -18,7 +18,7 @@ The example above is, in fact, a solution- you cannot find a better place to put
 
 ## The solution
 
-You might be tempted to suggest that the pipeline be placed along the mean y-coordinate of all of the pump stations. It seems to be clear that the pipeline should be laid roughly through the center of the constellation of pumps, since we're trying to minimize the distance to each pump. This geometrical intuition turns out to be wrong in rather the same way that our as-the-crow-flies pathfinding intuition is [wrong in cities](https://en.wikipedia.org/wiki/Taxicab_geometry)- the unusual way of accounting for distance foils the obvious solution. I hope that examining an example of using the mean will convince you that the mean doesn't work. Click the image to expand it.
+You might be tempted to suggest that the pipeline be placed along the mean y-coordinate of all of the pump stations. It seems to be clear that the pipeline should be laid roughly through the center of the constellation of pumps, since we're trying to minimize the distance to each pump. This geometrical intuition turns out to be wrong in rather the same way that our as-the-crow-flies pathfinding intuition is [wrong in cities](https://en.wikipedia.org/wiki/Taxicab_geometry)- the unusual way of accounting for distance foils the obvious solution. I hope that examining an example of using the mean will convince you that the mean doesn't work; click the image to expand it.
 
 [![An overhead map showing five pump stations. A pipe runs east-west through approximately the mean of the y-coordinates of the pumps. Shorter pipes running north-south connect each pump station to its closest point on the main east-west pipe.](/images/suboptimal-thumb.png)](/images/suboptimal.png)
 
