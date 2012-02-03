@@ -10,7 +10,7 @@ Besides playing with GitHub, I've also been working on my reading list over the 
 
 ## The problem
 
-A number of well pumps have been built in arbitrary positions throughout a region. An east-west pipeline is to be built through the area with north-south connections to each pump off the main pipeline. Your task is to decide where to place the pipeline so that the total length of pipe that needs to be laid is minimized. An example region map is below; click the image to expand it. 
+A number of well pumps have been built in arbitrary positions throughout a region. An east-west pipeline is to be built through the area. Connections will run north-south from each pump to the nearest point on the main pipeline. Your task is to decide where to place the pipeline so that the total length of connections that need to be laid is minimized. An example region map is below; click the image to expand it. 
 
 [![An overhead map showing four pump stations. A pipe runs east-west through the center of the area. Shorter pipes running north-south connect each pump station to its closest point on the main east-west pipe.](/images/optimal-thumb.png)](/images/optimal.png)
 
