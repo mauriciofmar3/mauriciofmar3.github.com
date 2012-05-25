@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Pipe Optimization Problem
+title: The pipe optimization problem
 tags: puzzle
 ---
 
