@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Counter-Strike: Source ladder climbing
+title: Counter-Strike&#58; Source ladder climbing
 tags: gaming
 ---
 
