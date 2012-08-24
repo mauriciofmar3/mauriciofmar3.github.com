@@ -20,7 +20,8 @@ Because of the game's physics model, if the player gets up to speed and reaches 
 
 Here are some recordings of the forward and diagonal methods. It takes about a minute to find the exact angle where it works, but I cut that part out.
 
-<br /><div style="text-align:center;">
+<br />
+<div style="text-align:center;">
 <iframe width="560" height="315" src="http://www.youtube.com/embed/NNV6hE79g_s"> </iframe>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/lBFp3R90_Yc"> </iframe>
