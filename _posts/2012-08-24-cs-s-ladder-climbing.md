@@ -1,20 +1,23 @@
 ---
 layout: post
-title: A Fibonacci mnemonic
-tags: math
+title: CS:Source ladder climbing
+tags: gaming
 ---
 
-The Fibonacci sequence is:
-$$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...$$
-Each term is the sum of the previous two terms in the sequence. If you're like me, you can readily identify numbers in the Fibonacci sequence. Well, an interesting property of this sequence is that it works as a mnemonic for converting miles to kilometers. For example, 21 is followed by 34 in the Fibonacci sequence, and 21 miles is [about 34 kilometers](https://encrypted.google.com/search?q=21+miles+to+kilometers). Likewise, 34 is followed by 55 in the Fibonacci sequence, and 34 miles is [about 55 kilometers](https://encrypted.google.com/search?q=34+miles+to+kilometers).
+I have been playing [Counter-Strike: Source](http://store.steampowered.com/app/240/) off and on since its release in late 2004. Gameplay largely consists of playing the same short scenarios over and over against different opponents. Over the course of hundreds or thousands of hours of gameplay, one learns to optimize every aspect of one's play to gain an edge against the other team. Everything from tiny obstructions in the game levels to the feel of the recoil of each weapon is inevitably memorized and incorporated into players' muscle memory as the hours go by. Players continually search out better tactics, tune their game client configurations, and generally try to develop a better feel for the Source engine.
 
-Why does this work? The short answer is that the Fibonacci numbers grow with \\(\varphi^n\\), and \\(\varphi\\) is approximately the conversion constant from miles to kilometers. More exactly,
-$$\lim_{n\to\infty}\frac{F_{n+1}}{F_n}=\varphi$$
-The value of \\(\varphi\\) is about 1.62, and 1 mile is about 1.61 kilometers. So successive terms in the Fibonacci sequence are approximately converting miles to kilometers! And, of course, to convert in the other direction you simply look at predecessive terms.
+I say all of that in the hope that with the above introduction, the next sentence won't seem overly bizarre: **I've been wondering for years about the most efficient way to climb a ladder.** 
 
-A couple of techniques are useful for when the number you want to convert isn't exactly a Fibonacci number. If you want to convert 17 miles to kilometers, you could look at the conversions for Fibonacci numbers 13 and 21 and try to interpolate the answer. However, since 34 is a Fibonacci number you can get a much better answer by converting 34 miles to 55 kilometers and dividing by 2. 
+Typically to climb a ladder in a first-person shooter, the player (1) walks forward into the ladder while looking up. But what happens if you (2) back into the ladder while looking down? What happens if you (3) strafe sideways into a ladder while facing off to the side? What happens if you (4) face 45 degrees to the right of the ladder and then walk diagonally forward and left? In the case of the Source engine, 2 produces the same upward movement as 1, 3 produces no movement, and 4 produces up to 140% of the upward movement of 1 and 2 depending on where you're looking vertically.
 
-You could also change the initial conditions of the recurrence. A Fibonacci sequence with general starting conditions \\(F_{0}, F_{1}\\) is called a Lucas sequence. Because when solving a linear homogeneous recurrence relation the starting conditions don't affect the relation's characteristic equation, a Lucas sequence also grows with \\(\varphi^n\\), and the mnemonic applies. So you have more data points to work with if you also memorize, for example, the sequence:
-$$1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322...$$
+To get exact times for each possibility, I created [this test map](/images/climbtest0000.jpg) with the Source SDK. The idea was to climb the ladders with each technique, record the climbs, and examine the video to get the exact time for each climb.
 
-For more mathematical coincidences, see [the Wikipedia article](https://en.wikipedia.org/wiki/Mathematical_coincidence).
+[![A screenshot of the Hammer editor.](/images/hammer-thumb.png)](/images/hammer.png)
+
+Unfortunately, the second variable in play - the *vertical* angle that the player is facing when they climb the ladder- has a huge influence on the speed of the climb. What I really want is to rank the times using the optimal vertical angle for each technique. It would be extremely difficult to determine the optimal angle and control it experimentally, so I cheated. Because of the game's physics model, if the player gets up to speed and reaches the top of the ladder, then he or she will sail upward a short distance past the top before falling back down. The more rapid the player's rate of ascent, the farther they will go. By trial and error, I determined that it's impossible to clear more than 53 [units](https://developer.valvesoftware.com/wiki/Dimensions) using techniques 1 and 2, and it's imposible to clear more than 105 units using technique 4. **Those distances can only be cleared by facing very close to the optimal vertical angle.** So I jump around trying to find the "sweet spot" which will clear the first height at the bottom of the track. Then I let go of the mouse and record a climb the rest of the way up at the optimal angle!
+
+Here are some recordings of the forward and diagonal methods. It takes about a minute to find the exact angle where it works, but I cut that part out.
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/NNV6hE79g_s" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/lBFp3R90_Yc" frameborder="0" allowfullscreen></iframe>
