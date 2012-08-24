@@ -23,3 +23,5 @@ Here are some recordings of the forward and diagonal methods. It takes about a m
 <iframe width="560" height="315" src="http://www.youtube.com/embed/NNV6hE79g_s"> </iframe>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/lBFp3R90_Yc"> </iframe>
+
+The final results: technique 1 and its variant 2 climb at about 281 ups (units per second), and tecnique 3 and its variants climb at about 399 ups.
