@@ -34,7 +34,7 @@ So what happened? Lest you think that the extra execution context has something 
 
 {% highlight javascript %}
 for(var i=0; i<10; i++) {
-	(function () {
+    (function () {
         $("#img" + i).click(
             function () { alert(i); }
         );
