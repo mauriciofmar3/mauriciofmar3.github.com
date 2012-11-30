@@ -8,7 +8,7 @@ Last night I was trying to figure out a [balisong](https://en.wikipedia.org/wiki
 
 First, get the `<embed>` DOM object. The best way to do this is by using the DOM inspector in your favorite browser to find the ID string of the element. Right now that ID is `video_player`, but YouTube mught change it in the future. 
 
-![A screenshot of Firefox's DOM inspector](/images/movie_player.png)]
+![A screenshot of Firefox's DOM inspector](/images/movie_player.png)
 
 Once you have the ID string you can get the DOM object using getElementById in your browser's JavaScript console.
 
