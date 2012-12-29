@@ -241,10 +241,6 @@ object {
 	float: right;
 }
 
-.spoilerbutton:focus, .spoilertext {
-	display:none;
-}
-
-.spoilerbutton:focus + .spoilertext {
-	display:block;
+.spoiler {
+	color: white;
 }
