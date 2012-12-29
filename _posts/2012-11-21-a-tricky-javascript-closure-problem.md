@@ -22,7 +22,7 @@ Here's [a workaround](http://jsfiddle.net/v4sSD/):
 
 {% highlight javascript %}
 for(var i=0; i<10; i++) {
-	(function (i) {
+    (function (i) {
         $("#img" + i).click(
             function () { alert(i); }
         );
