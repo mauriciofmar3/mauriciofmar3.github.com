@@ -10,7 +10,7 @@ You have been abducted by terrorists and blindfolded. They sit you down at a tab
 
 > There is a deck of 52 cards on the table in front of you. Ten of them are face-up and the rest are face-down. Split the deck into halves such that each half has an equal number of face-up cards.
 
-You sit thinking for a few minutes. The terrorists are growing impatient around you when you finally smile and count out 26 cards from the deck. You put them aside as one half-deck. Of the remaining 26 cards, you flip the top 10 cards over to make the other half-deck.
+You sit thinking in darkness for a few minutes. The terrorists are growing impatient around you when you finally smile: you've got the solution! You count out 26 cards from the deck and put them aside as one half-deck. Of the remaining 26 cards, you flip the top 10 cards over to make the other half-deck.
 
 The terrorists are impressed, but you have a yet harder challenge to face before they will let you go.
 
