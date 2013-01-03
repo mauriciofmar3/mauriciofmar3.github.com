@@ -15,7 +15,7 @@ body {
 	border-top: solid #ccc;
 
 	/* Fonts are defined once here and inherited by all */
-	font-family: Helvetica, Verdana, sans-serif;
+	font-family: Georgia, Helvetica, Verdana, sans-serif;
 	color: #444;
 	text-decoration: none;
 	line-height: 1.1em;
