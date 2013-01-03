@@ -3,12 +3,13 @@
 	width: 750px;
 	margin-right: auto;
 	margin-left: auto;
+	background-color: #ffffff;
 }
 
 body {
 	/* background-color: #f0f0f0;*/
 	text-align: center;
-	width: 750px;
+	background-color: #fdfdfd;
 	padding-top: 20px;
 	margin-right:auto;
 	margin-left:auto;
@@ -85,7 +86,6 @@ object {
 }
 
 /* Defines the white box where content lies */
-/* Also defines the hidden div holding the archive content retrieve with jQuery on demand */
 #contents, #archive, #about, #topics {
 	margin-top: 20px;
 	margin-bottom: 10px;
