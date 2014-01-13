@@ -232,11 +232,12 @@ public static void main(String[] args) {
 
 ### Advanced optimizations
 
-Believe it or not, that's about all of the optimizations that are performed at compile time. The really advanced optimizations are going to be deferred until the code is JIT compiled at runtime. This allows the JIT to write machine code which is optimized for your specific processor architecture.
+Believe it or not, that's about all of the optimizations that are performed at compile time. The really advanced optimizations are going to be deferred until the code is just-in-time compiled at runtime. This allows the JIT to write machine code which is optimized for your specific processor architecture.
 
-Something you **need** to be aware of, though, is that to employ certain optimizations the JIT cannot compile loaded bytecode immediately:
+Something you **need** to be aware of, though, is that in order to employ certain optimizations the JIT cannot compile loaded bytecode immediately:
 
-> A warm-up period provides the HotSpot VM’s JIT compiler the opportunity to collect information about a running program and make intelligent dynamic optimization decisions based on the hot” code paths taken by the executing program. By default, the HotSpot Server VM executes a block of Java byte code 10,000 times before the HotSpot Server JIT compiler produces native machine code for that block of Java bytecode.
+> A warm-up period provides the HotSpot VM’s JIT compiler the opportunity to collect information about a running program and make intelligent dynamic optimization decisions based on the "hot" code paths taken by the executing program. By default, the HotSpot Server VM executes a block of Java byte code 10,000 times before the HotSpot Server JIT compiler produces native machine code for that block of Java bytecode.
 
 - [Java Performance](http://www.amazon.com/Java-Performance-Charlie-Hunt/dp/0137142528), by Charlie Hunt and Binu John.
 
+This can really play hell with your efforts to profile code, because the performance profile of your application is constantly changing as more methods are JIT compiled. One thing you can try is setting the runtime flag [`-XX:CompileThreshold`](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html#PerformanceTuning) to a lower value, for example 1. This will cause the JIT to run immediately; however, its optimizations will be less effective and this will subvert the Java code cache mechanism if you don't have enough memory available.
