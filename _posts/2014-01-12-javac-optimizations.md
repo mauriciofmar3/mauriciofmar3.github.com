@@ -11,7 +11,8 @@ I've been a full-time Java developer for about a year now, and in that time I've
     Java(TM) SE Runtime Environment (build 1.7.0_45-b18)
     Java HotSpot(TM) 64-Bit Server VM (build 24.45-b08, mixed mode)
 
-### Boolean expressions
+Boolean expressions
+===================
 
 Let's start with an easy case. Is the compiler smart enough to spot a redundant logical NOT in a boolean condition? Let's compile the following blocks of code:
 
@@ -90,7 +91,8 @@ Would you be justified in doing so?
 Nope! Once again, the compiler is smarter than you are. In fact, in this case the compiler literally generates the exact same bytecode for the two functions.
 
 
-### Constant arithmetic
+Constant arithmetic
+===================
 
 ``` java
 private static int SECONDS_IN_30_DAYS = 60*60*24*30;
@@ -166,7 +168,8 @@ public static void main(java.lang.String[]);
      8: return
 ```
 
-### String concatenation
+String concatenation
+====================
 
 Some people will tell you that String concatenation with `+` is a performance killer on Java. They'll tell you to use StringBuilder instead. But javac is actually pretty smart about converting `+` into StringBuilder appends.
 
@@ -218,7 +221,8 @@ return cat + " 123";
 Note that the StringBuilder constructor is called twice (lines 8 and 35).
 
 
-### Constant String concatenation
+Constant String concatenation
+=============================
 
 [IntelliJ IDEA](http://www.jetbrains.com/idea/) breaks lengthy String constants into multiple lines:
 
@@ -236,7 +240,8 @@ As you might expect, the compiler deals:
 0: ldc           #2                  // String We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.
 ```
 
-### Dead code elimination
+Dead code elimination
+=====================
 
 If code is unreachable, it will be eliminated from the class file:
 
@@ -254,7 +259,8 @@ public static void main(java.lang.String[]);
      0: return
 ```
 
-### Advanced optimizations
+Advanced optimizations
+======================
 
 Believe it or not, that's about all of the optimizations that are performed at compile time. The really advanced optimizations are going to be deferred until the code is just-in-time compiled at runtime. This allows the JIT to write machine code which is optimized for your specific processor architecture.
 
