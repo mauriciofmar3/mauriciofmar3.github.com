@@ -1,4 +1,4 @@
----
+safe: false
 permalink: /:year/:month/:title.html
 pygments: true
 markdown: redcarpet
