@@ -14,14 +14,14 @@ I've been a full-time Java developer for about a year now, and in that time I've
 ### Boolean expressions
 
 Let's start with an easy case. Is the compiler smart enough to spot a redundant logical NOT in a boolean condition? Let's compile the following blocks of code:
-```java
+``` java
 if(!booleanExpression) {
     doSomething(1);
 } else {
     doSomething(0);
 }
 ```
-```java
+``` java
 if(booleanExpression) {
     doSomething(0);
 } else {
@@ -52,12 +52,12 @@ The compiler produces pretty much identical bytecode for both of these. Of cours
 The only difference is an `ifeq` instead of an `ifne` as the condition for the jump, so you can feel free to use either of the two forms depending on which makes more intuitive sense in context.
 
 Now for a more complex case. You might be tempted to apply your knowledge of boolean algebra to transform the former of these blocks into the latter in order to improve performance in a tight loop:
-```java
+``` java
 if(!a || !b) {
     doSomething();
 }
 ```
-```java
+``` java
 if(!(a && b)) {
     doSomething();
 }
@@ -83,7 +83,7 @@ Nope! Once again, the compiler is smarter than you are. In fact, in this case th
 
 
 ### Constant arithmetic
-```java
+``` java
 private static int SECONDS_IN_30_DAYS = 60*60*24*30;
 ```
 
@@ -97,7 +97,7 @@ This is clearly more readable than embedding the magic constant 2592000 in the s
 The `ldc` instruction indicates that the compiler has precomputed the value 2592000 and stored it in the class's constant pool. No multiplication occurs at run-time.
 
 OK, so that works for integer arithmetic. How about constant boolean expressions?
-```java
+``` java
 private static boolean troo = true && (false || false || (true && true));
 ```
 ```
@@ -111,7 +111,7 @@ This one is even leaner! Since there's a special bytecode instruction for loadin
 Note that in the two previous examples we have forced the compiler to create a static field within the class, and to create code which initializes the field. Creating a field is unnecessary for constant expressions. If we add the `final` keyword, we can get the compiler to inline these values wherever they're actually used within the class.
 
 Without `final`:
-```java
+``` java
 private static int SECONDS_IN_30_DAYS = 60*60*24*30;
 
 public static void main(String[] args) {
@@ -134,7 +134,7 @@ static {};
 ```
 
 With `final` there is no separate static initializer section, and instead of `getstatic` we can simply `ldc` to get the constant value:
-```java
+``` java
 private static final int SECONDS_IN_30_DAYS = 60*60*24*30;
 
 public static void main(String[] args) {
@@ -153,7 +153,7 @@ public static void main(java.lang.String[]);
 ### String concatenation
 
 Some people will tell you that String concatenation with `+` is a performance killer on Java. They'll tell you to use StringBuilder instead. But javac is actually pretty smart about converting `+` into StringBuilder appends.
-```java
+``` java
 return str1 + " : " + str2;
 ```
 ```
@@ -170,7 +170,7 @@ return str1 + " : " + str2;
 ```
 
 However, it's not perfect. In cases like this you need to construct a StringBuilder yourself, because the automatic StringBuilder won't be reused for the second line:
-```java
+``` java
 String cat = str1 + " : " + str2;
 return cat + " 123";
 ```
@@ -202,7 +202,7 @@ Note that the StringBuilder constructor is called twice (lines 8 and 35).
 ### Constant String concatenation
 
 [IntelliJ IDEA](http://www.jetbrains.com/idea/) breaks lengthy String constants into multiple lines:
-```java
+``` java
 return "We the People of the United States, in Order to form a more perfect "
      + "Union, establish Justice, insure domestic Tranquility, provide for the "
      + "common defence, promote the general Welfare, and secure the Blessings "
@@ -218,7 +218,7 @@ As you might expect, the compiler deals:
 ### Dead code elimination
 
 If code is unreachable, it will be eliminated from the class file:
-```java
+``` java
 public static void main(String[] args) {
     if(false) {
         System.out.println("The universe is broken.");

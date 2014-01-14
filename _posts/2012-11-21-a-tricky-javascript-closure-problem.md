@@ -6,7 +6,7 @@ tags: programming
 
 Say you have ten images on a page, with IDs `img0` to `img9`. You'd like the number of the image to pop up when you click on one. You might be tempted to write the following JQuery code:
 
-```javascript
+``` javascript
 for(var i=0; i<10; i++) {
     $("#img" + i).click(
         function () { alert(i); }
@@ -20,7 +20,7 @@ The problem, of course, is that a *reference* to the `i` object is being stored 
 
 Here's [a workaround](http://jsfiddle.net/v4sSD/):
 
-```javascript
+``` javascript
 for(var i=0; i<10; i++) {
     (function (i) {
         $("#img" + i).click(
@@ -32,7 +32,7 @@ for(var i=0; i<10; i++) {
 
 So what happened? Lest you think that the extra execution context has something to do with it, observe that this version without a function argument [doesn't work](http://jsfiddle.net/vfwnU/):
 
-```javascript
+``` javascript
 for(var i=0; i<10; i++) {
     (function () {
         $("#img" + i).click(
@@ -44,7 +44,7 @@ for(var i=0; i<10; i++) {
 
 This demonstrates that the function argument preserves the passed value. Indeed, primitives are copied by value in function calls:
 
-```javascript
+``` javascript
 function toFive(in) {
 	in = 5;
 }
@@ -55,7 +55,7 @@ a == 4 // true
 
 What about the case where we're dealing with real objects? Here's an alternative example, which toggles each image to a different image on click. This version [doesn't work](http://jsfiddle.net/Zpwku/) (the last image is always toggled):
 
-```javascript
+``` javascript
 for(var i=0; i<5; i++) {
     var toggler = $("<img/>", { "src": "http://www.famfamfam.com/lab/icons/silk/icons/cross.png" });
     toggler.click(function () { toggler.attr("src", "http://www.famfamfam.com/lab/icons/silk/icons/tick.png"); });
@@ -65,7 +65,7 @@ for(var i=0; i<5; i++) {
 
 In this case too, a self-executing function declaration [solves the problem](http://jsfiddle.net/YLSn6/):
 
-```javascript
+``` javascript
 for(var i=0; i<5; i++) {
     var toggler = $("<img/>", { "src": "http://www.famfamfam.com/lab/icons/silk/icons/cross.png" });
     (function (t) {
