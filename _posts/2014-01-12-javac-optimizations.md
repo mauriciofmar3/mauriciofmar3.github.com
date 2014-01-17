@@ -191,6 +191,7 @@ return str1 + " : " + str2;
 ```
 
 However, it's not perfect. In cases like this you need to construct a StringBuilder yourself, because the automatic StringBuilder won't be reused for the second line:
+
 ``` java
 String cat = str1 + " : " + str2;
 return cat + " 123";
@@ -219,7 +220,6 @@ return cat + " 123";
 ```
 
 Note that the StringBuilder constructor is called twice (lines 8 and 35).
-
 
 Constant String concatenation
 -----------------------------

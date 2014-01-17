@@ -61,9 +61,12 @@ li pre {
 	font-size: 1.1em;
 }
 
+a {
+	text-decoration: none;
+}
+
 #contents a {
 	color: #3875d7;
-	text-decoration: none;
 }
 
 a:hover {
