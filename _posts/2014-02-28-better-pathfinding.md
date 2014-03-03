@@ -4,7 +4,7 @@ title: MagicalTux's EVE Online pathfinder
 tags: programming
 ---
 
-The [personal blog](http://blog.magicaltux.net/) of Mark Karpeles, aka MagicalTux, CEO of the [now-bankrupt](http://online.wsj.com/news/article_email/SB10001424052702303801304579410010379087576-lMyQjAxMTA0MDIwNzEyNDcyWj) Bitcoin exchange Mt. Gox, [received attention](https://news.ycombinator.com/item?id=7295932) on Hacker News recently. Given that Gox's spectacular $473 million downfall was supposedly caused by a bug in Karpeles's custom implementation of the Bitcoin protocol, people (including myself) were understandably interested in checking the quality of his public source code.
+The [personal blog](http://blog.magicaltux.net/) of Mark Karpeles, aka MagicalTux, CEO of the recently-bankrupt Bitcoin exchange Mt. Gox, [received attention](https://news.ycombinator.com/item?id=7295932) on Hacker News recently. Given that Gox's spectacular $473 million downfall was supposedly caused by a bug in Karpeles's custom implementation of the Bitcoin protocol, people (including myself) were understandably interested in checking the quality of his public source code.
 
 What we saw was not reassuring. In [one post](http://blog.magicaltux.net/2010/06/27/php-can-do-anything-what-about-some-ssh/), Karpeles describes a custom implementation of SSH2 which he wrote - in PHP - for his web hosting company. 
 
