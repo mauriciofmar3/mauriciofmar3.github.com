@@ -8,7 +8,7 @@ I have been playing [Counter-Strike: Source](http://store.steampowered.com/app/2
 
 I say all of that in the hope that with the above introduction, the next sentence won't seem overly bizarre: **I've been wondering for years about the most efficient way to climb a ladder.**
 
-Typically to climb a ladder in a first-person shooter, the player (1) walks forward into the ladder while looking up. But what happens if you (2) back into the ladder while looking down? What happens if you (3) strafe sideways into a ladder while facing off to the side? What happens if you (4) face 45 degrees to the right of the ladder and then walk diagonally forward and left? In the case of the Source engine, 2 produces the same upward movement as 1, 3 produces no movement, and 4 produces up to 142% of the upward movement of 1 and 2 depending on where you're looking vertically.
+Typically to climb a ladder in a first-person shooter, the player (1) walks forward into the ladder while looking up. But what happens if you (2) back into the ladder while looking down? What happens if you (3) strafe sideways into a ladder while facing off to the side? What happens if you (4) face 45 degrees to the right of the ladder and then walk diagonally forward and left? In the case of the Source engine, 2 produces the same upward movement as 1, 3 produces no movement, and - I found - 4 produces up to 142% of the upward movement of 1 and 2 depending on where you're looking vertically.
 
 To get exact times for each possibility, I created [this test map](/images/climbtest.vmf) ([screenshot](/images/climbtest0000.jpg)) with the Source SDK. The idea was to climb the ladders with each technique, record the climbs, and examine the video to get the exact time for each climb.
 
@@ -27,4 +27,4 @@ Here are some recordings of the forward and diagonal methods. It takes about a m
 <iframe width="560" height="315" src="http://www.youtube.com/embed/lBFp3R90_Yc?autoplay=1&amp;loop=1&amp;playlist=lBFp3R90_Yc&amp;controls=0&amp;showinfo=0"> </iframe>
 </div>
 
-The final results: technique 1 and its variant 2 climb at about 281 ups (units per second), and tecnique 3 and its variants climb at about 399 ups. That's 42% faster!
+The final results: technique 1 and its variant 2 climb at about 281 ups (units per second), and technique 3 and its variants climb at about 399 ups. That's 42% faster!
