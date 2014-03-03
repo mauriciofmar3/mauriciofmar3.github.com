@@ -24,9 +24,9 @@ Another of his blog posts is about [a tool](http://blog.magicaltux.net/2008/11/3
 
 ![Systems map in EVE Online](/images/eve-systems.png)
 
-I thought I'd do my duty to hop on [the MagicalTux hate bandwagon](https://news.ycombinator.com/item?id=7332391) by addressing his EVE pathfinder. Although I could nitpick on matters of style, I don't think that's constructive. Instead, I want to focus on the core- that is, the [all-pairs shortest path solver](https://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths) which is the basis of his algorithm. The general idea is to generate an index which contains, for each system, the next hop to take in order to reach any given system. This uses O(n^2) space but allows efficient pathfinding between any two arbitrary systems in the universe. All of this is perfectly fine so far. The problem is how he goes about constructing this index.
+I thought I'd [hop on the MagicalTux haters bandwagon](https://news.ycombinator.com/item?id=7332391) by addressing his EVE pathfinder. Although I could nitpick on matters of style, I don't think that's constructive. Instead, I want to focus on the core- that is, the [all-pairs shortest path solver](https://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths) which is the basis of his algorithm. The general idea is to generate an index which contains, for each system, the next hop to take in order to reach any given system. This uses O(n^2) space but allows efficient pathfinding between any two arbitrary systems in the universe. All of this is perfectly fine so far. The problem is how he goes about constructing this index.
 
-This is his algorithm:
+Based on my reading of his code, this appears to be his algorithm:
 
 1. Inform each system how to reach its adjacent systems.
 2. For each system, look for known paths to systems 1 hop away and advertise those paths to its adjacent systems.
@@ -44,7 +44,7 @@ This algorithm is essentially the [Bellman-Ford algorithm](https://en.wikipedia.
 
 I downloaded the jump connection data [helpfully provided](http://files.magicaltux.net/eveonline/) by MagicalTux - the [official data](http://community.eveonline.com/community/fansites/toolkit/) comes in a most unhelpful binary MSSQL format - and put it in [a CSV file](https://gist.github.com/briangordon/8fa812fecccad11e1f17) for easy parsing.
 
-My complete EVE pathfinder implementation can be found [here](https://gist.github.com/briangordon/9330167). It only requires O(n^2) space, which is nice. This is the core of the code where almost 100% of the running time is spent:
+My complete EVE pathfinder implementation can be found [here](https://gist.github.com/briangordon/9330167). It doesn't require any extra space (asymptotically) to construct the index, which is nice. This is the core of the code where almost 100% of the running time is spent:
 
 ``` cpp
 // Floyd's algorithm
@@ -62,11 +62,11 @@ for(uint32_t k=0; k<NUM_SYSTEMS; k++) {
 }
 ```
 
-I picked two random system IDs (30000029 and 30000050) for a demo. You can see the output below:
+I picked two random system IDs (30000029 and 30000050) for a pathfinding demo. You can see the output of the test below:
 
     brian@mint ~/eve $ ./eve 
     Indexing... done. Elapsed time 123.05 seconds.
     Calculating the quickest route from 30000029 to 30000050... done.
     Built a 14 hop route in 0.002 ms.
 
-Note that, indeed, the shortest route between those two systems [according to DOTLAN](http://evemaps.dotlan.net/route/Lachailes:Fera) is 14 hops! And the index was built in about 1% of the time that it took MagicalTux's PHP version.
+Note that, indeed, the shortest route between those two systems [according to DOTLAN](http://evemaps.dotlan.net/route/Lachailes:Fera) is 14 hops! And the index was built in only two minutes- about 1% of the time that it took MagicalTux's PHP version.
