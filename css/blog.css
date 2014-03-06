@@ -110,7 +110,7 @@ object {
 
 /* Unordered lists in contents */
 #contents ul {
-	list-style-type: circle;
+	list-style-type: disc;
 	font-size: 0.8em;
 	margin-top: 1.5em;
 	color: #000;
