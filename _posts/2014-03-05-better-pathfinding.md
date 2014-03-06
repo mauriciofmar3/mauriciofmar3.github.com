@@ -18,13 +18,15 @@ This is horrifying to see from the guy who wrote the server which once handled [
 
 > Altogether it seemed like you could easily MITM connections made to the server, but I don't think I ever tried. It was a perfect example--to me at least--of why you should not spend a trivial amount of time reading about crypto on Wikipedia and then writing crypto code.
 
-Later [it was alleged](http://www.wired.com/wiredenterprise/2014/03/bitcoin-exchange/) that developers at Mt. Gox would push changes directly to production, and didn't even use version control for the site's source code.
+I absolutely agree. Learning about cryptography in college didn't so much teach me how to do crypto as it taught me to be afraid of it. There are a thousand ways to screw it up, and it only takes one mistake for your cryptosystem to fall apart. The recent [Apple](https://www.imperialviolet.org/2014/02/22/applebug.html) and [GnuTLS](http://arstechnica.com/security/2014/03/critical-crypto-bug-leaves-linux-hundreds-of-apps-open-to-eavesdropping/) vulns show that even the serious players get this wrong.
+
+So best practices were apparently not followed at Mt. Gox. In fact, later [it was alleged](http://www.wired.com/wiredenterprise/2014/03/bitcoin-exchange/) that developers at Mt. Gox would push changes directly to production, and didn't even use version control for the site's source code.
 
 Another of his blog posts is about [a tool](http://blog.magicaltux.net/2008/11/30/eve-online-pathfinder/) which he wrote - in PHP of course - to compute routes between star systems in the MMORPG [EVE Online](https://en.wikipedia.org/wiki/Eve_Online). In EVE, solar systems are connected to each other with portals called Stargates. The result is [a big graph](http://evemaps.dotlan.net/). Savvy players will try to take the shortest possible path to get from point A to point B by using a shortest-path algorithm to automate navigation.
 
 ![Systems map in EVE Online](/images/eve-systems.png)
 
-I thought I'd [hop on the MagicalTux haters bandwagon](https://news.ycombinator.com/item?id=7332391) by addressing his EVE pathfinder. Although I could nitpick on matters of style, I don't think that's constructive. Instead, I want to focus on the core- that is, the [all-pairs shortest path solver](https://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths) which is the basis of his algorithm. The general idea is to generate an index which contains, for each system, the next hop to take in order to reach any given system. This uses O(n^2) space but allows efficient pathfinding between any two arbitrary systems in the universe. All of this is perfectly fine so far. The problem is how he goes about constructing this index.
+I thought I'd hop on [the code criticism bandwagon](https://news.ycombinator.com/item?id=7332391) by addressing his EVE pathfinder. Although I could nitpick on matters of style, I don't think that's constructive. Instead, I want to focus on the core- that is, the [all-pairs shortest path solver](https://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths) which is the basis of his algorithm. The general idea is to generate an index which contains, for each system, the next hop to take in order to reach any given system. This uses O(n^2) space but allows efficient pathfinding between any two arbitrary systems in the universe. All of this is perfectly fine so far. The problem is how he goes about constructing this index.
 
 Based on my reading of his code, this appears to be his algorithm:
 
@@ -41,6 +43,7 @@ This algorithm is essentially the [Bellman-Ford algorithm](https://en.wikipedia.
 * Use C++ instead of PHP.
 * Don't use file I/O as a working data structure.
 * Use [Floyd-Warshall](https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm), optimized as best I can, instead of his algorithm.
+* Use OpenMP to parallelize the algorithm.
 
 I downloaded the jump connection data [helpfully provided](http://files.magicaltux.net/eveonline/) by MagicalTux - the [official data](http://community.eveonline.com/community/fansites/toolkit/) comes in a most unhelpful binary MSSQL format - and put it in [a CSV file](https://gist.github.com/briangordon/8fa812fecccad11e1f17) for easy parsing.
 
@@ -49,7 +52,20 @@ My complete EVE pathfinder implementation can be found [here](https://gist.githu
 ``` cpp
 // Floyd's algorithm
 for(uint32_t k=0; k<NUM_SYSTEMS; k++) {
+    #pragma omp parallel for shared(k, cost, next) schedule(dynamic)
     for(uint32_t i=0; i<NUM_SYSTEMS; i++) {
+        if(i==k) {
+            // It's impossible to find a better path from i to any j in this case. Think about it:
+            // After the previous pass, we have a path from i to j using the first k-1 nodes as intermediates. 
+            // If we're to improve on it during this pass (using the first k nodes as intermediates instead of the 
+            // first k-1 nodes), then the kth node has to be on the path somewhere. Otherwise, what has changed?
+            // So in the case that i==k, we're looking at paths that start at i (which is k), then go on to use k 
+            // later as an intermediate elsewhere in the path, and then finally finish at j. There's clearly no way 
+            // that this path can be shorter than the previous best which didn't loop back through k.
+            // This is actually really important because without this fact, the various iterations of i wouldn't 
+            // be independent and would require synchronization.
+            continue;
+        }
         for(uint32_t j=0; j<NUM_SYSTEMS; j++) {
             uint32_t prev = cost[(NUM_SYSTEMS * i) + j];
             uint32_t candidate = cost[(NUM_SYSTEMS * i) + k] + cost[(NUM_SYSTEMS * k) + j];
@@ -65,8 +81,8 @@ for(uint32_t k=0; k<NUM_SYSTEMS; k++) {
 I picked two random system IDs (30000029 and 30000050) for a pathfinding demo. You can see the output of the test below:
 
     brian@mint ~/eve $ ./eve 
-    Indexing... done. Elapsed time 123.05 seconds.
+    Indexing... done. Elapsed time 38.99 seconds.
     Calculating the quickest route from 30000029 to 30000050... done.
     Built a 14 hop route in 0.002 ms.
 
-Note that, indeed, the shortest route between those two systems [according to DOTLAN](http://evemaps.dotlan.net/route/Lachailes:Fera) is 14 hops! And the index was built in only two minutes- about 1% of the time that it took MagicalTux's PHP version.
+Note that, indeed, the shortest route between those two systems [according to DOTLAN](http://evemaps.dotlan.net/route/Lachailes:Fera) is 14 hops! And the index was built in less than 40 seconds- about 0.4% of the time that it took MagicalTux's PHP version.
