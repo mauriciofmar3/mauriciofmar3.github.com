@@ -37,7 +37,11 @@
       src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        hljs.configure({tabReplace: '    '});
+        hljs.configure({languages: []});
+        hljs.initHighlightingOnLoad();
+    </script>
 </head>
 <body>
 
