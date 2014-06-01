@@ -20,11 +20,6 @@ Because of the game's physics model, if the player gets up to speed and reaches 
 
 Here are some recordings of the forward and diagonal methods. It takes about a minute to find the exact angle where it works, but I cut that part out.
 
-<br />
-<div style="text-align:center;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NNV6hE79g_s?autoplay=1&amp;loop=1&amp;playlist=NNV6hE79g_s&amp;controls=0&amp;showinfo=0"> </iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lBFp3R90_Yc?autoplay=1&amp;loop=1&amp;playlist=lBFp3R90_Yc&amp;controls=0&amp;showinfo=0"> </iframe>
-</div>
+<br><div style="text-align:center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/NNV6hE79g_s?autoplay=1&amp;loop=1&amp;playlist=NNV6hE79g_s&amp;controls=0&amp;showinfo=0"></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/lBFp3R90_Yc?autoplay=1&amp;loop=1&amp;playlist=lBFp3R90_Yc&amp;controls=0&amp;showinfo=0"></iframe></div>
 
 The final results: technique 1 and its variant 2 climb at about 281 ups (units per second), and technique 3 and its variants climb at about 399 ups. That's 42% faster!
