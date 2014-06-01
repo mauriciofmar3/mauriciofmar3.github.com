@@ -6,9 +6,9 @@ tags: programming
 
 The personal blog of Mark Karpeles, aka MagicalTux, CEO of the recently-bankrupt Bitcoin exchange Mt. Gox, [received attention](https://news.ycombinator.com/item?id=7295932) on Hacker News recently. Given that Gox's spectacular $473 million downfall was supposedly caused by a bug in Karpeles's custom implementation of the Bitcoin protocol, people were understandably interested in checking the quality of his public source code.
 
-What we saw was not reassuring. In [one post](https://web.archive.org/web/20140226001727/http://blog.magicaltux.net/2010/06/27/php-can-do-anything-what-about-some-ssh/), Karpeles describes a custom implementation of SSH2 which he wrote - in PHP - for his web hosting company. (emphasis mine)
+What we saw was not reassuring. In [one post](https://web.archive.org/web/20140226001727/http://blog.magicaltux.net/2010/06/27/php-can-do-anything-what-about-some-ssh/), Karpeles describes a custom implementation of SSH2 which he wrote for production use at his web hosting company.
 
-> With PHP I could write a fully working SSH server in only 3 days. ... My goal when writing this was to provide a replacement for the FTP protocol **for the customers of my hosting service**.
+> With PHP I could write a fully working SSH server in only 3 days. ... My goal when writing this was to provide a replacement for the FTP protocol for the customers of my hosting service.
 
 > As I was missing some functions to properly handle the initial Diffie-Hellman key exchange (and later to implement publickey authentication) I had to re-implement those in PHP.
 
@@ -18,7 +18,7 @@ This is horrifying to see from the guy who wrote the server which once handled [
 
 > Altogether it seemed like you could easily MITM connections made to the server, but I don't think I ever tried. It was a perfect example--to me at least--of why you should not spend a trivial amount of time reading about crypto on Wikipedia and then writing crypto code.
 
-I absolutely agree. Learning about cryptography in college didn't so much teach me how to do crypto as it taught me to be afraid of it. There are a thousand ways to screw up, and it only takes one mistake for your cryptosystem to fall apart. The recent [Apple](https://www.imperialviolet.org/2014/02/22/applebug.html) and [GnuTLS](http://arstechnica.com/security/2014/03/critical-crypto-bug-leaves-linux-hundreds-of-apps-open-to-eavesdropping/) vulns show that even the serious players get this wrong.
+I absolutely agree. The main lesson that you should take away from [the crypto class](https://class.coursera.org/crypto-preview/lecture) is that you should be afraid of rolling your own crypto code. There are a thousand ways to screw up, and it only takes one mistake for your cryptosystem to fall apart. The recent [Apple](https://www.imperialviolet.org/2014/02/22/applebug.html) and [GnuTLS](http://arstechnica.com/security/2014/03/critical-crypto-bug-leaves-linux-hundreds-of-apps-open-to-eavesdropping/) vulns show that even the serious players get this wrong.
 
 So best practices were apparently not followed at Mt. Gox. In fact, later [it was alleged](http://www.wired.com/wiredenterprise/2014/03/bitcoin-exchange/) that developers at Mt. Gox would push changes directly to production, and didn't even use version control for the site's source code.
 
