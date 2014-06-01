@@ -12,12 +12,12 @@ First, get the `<embed>` DOM object. The best way to do this is by using the DOM
 
 Once you have the ID string you can get the DOM object using `getElementById` in your browser's JavaScript console.
 
-``` javascript
+~~~ javascript
 var ytplayer = document.getElementById("movie_player");
-```
+~~~
 
 Now you can use any of the functions of the [YouTube player API](https://developers.google.com/youtube/js_api_reference#Playback_controls), which are properties of the DOM object we just found. For example, `seekTo` will take you to a given point in the video. So if you want to go back to 1:01 in the video every ten seconds then you can use `setInterval`:
 
-``` javascript
+~~~ javascript
 setInterval(function () { ytplayer.seekTo(61, true); }, 10000);
-```
+~~~

@@ -49,21 +49,12 @@ I downloaded the jump connection data [helpfully provided](http://files.magicalt
 
 My complete EVE pathfinder implementation can be found [here](https://gist.github.com/briangordon/9330167). It doesn't require any extra space (asymptotically) to construct the index, which is nice. This is the core of the code where almost 100% of the running time is spent:
 
-``` cpp
+~~~ cpp
 // Floyd's algorithm
 for(uint32_t k=0; k<NUM_SYSTEMS; k++) {
     #pragma omp parallel for shared(k, cost, next) schedule(dynamic)
     for(uint32_t i=0; i<NUM_SYSTEMS; i++) {
-        if(i==k) {
-            // It's impossible to find a better path from i to any j in this case. Think about it:
-            // After the previous pass, we have a path from i to j using the first k-1 nodes as intermediates. 
-            // If we're to improve on it during this pass (using the first k nodes as intermediates instead of the 
-            // first k-1 nodes), then the kth node has to be on the path somewhere. Otherwise, what has changed?
-            // So in the case that i==k, we're looking at paths that start at i (which is k), then go on to use k 
-            // later as an intermediate elsewhere in the path, and then finally finish at j. There's clearly no way 
-            // that this path can be shorter than the previous best which didn't loop back through k.
-            // This is actually really important because without this fact, the various iterations of i wouldn't 
-            // be independent and would require synchronization.
+        if(i == k) {
             continue;
         }
         for(uint32_t j=0; j<NUM_SYSTEMS; j++) {
@@ -76,7 +67,7 @@ for(uint32_t k=0; k<NUM_SYSTEMS; k++) {
         }
     }
 }
-```
+~~~
 
 I picked two random system IDs (30000029 and 30000050) for a pathfinding demo. My test program constructed the all-pairs index and then used it to find the shortest path between the two systems. You can see the output of the test below:
 

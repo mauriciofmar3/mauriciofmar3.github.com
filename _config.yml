@@ -1,5 +1,4 @@
 safe: false
 permalink: /:year/:month/:title.html
 pygments: true
-markdown: redcarpet
-extensions: [fenced_code_blocks, no_intra_emphasis]
+markdown: kramdown
