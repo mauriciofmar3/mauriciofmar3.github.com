@@ -4,11 +4,11 @@ title: MagicalTux's EVE Online pathfinder
 tags: programming
 ---
 
-The [personal blog](http://blog.magicaltux.net/) of Mark Karpeles, aka MagicalTux, CEO of the recently-bankrupt Bitcoin exchange Mt. Gox, [received attention](https://news.ycombinator.com/item?id=7295932) on Hacker News recently. Given that Gox's spectacular $473 million downfall was supposedly caused by a bug in Karpeles's custom implementation of the Bitcoin protocol, people were understandably interested in checking the quality of his public source code.
+The personal blog of Mark Karpeles, aka MagicalTux, CEO of the recently-bankrupt Bitcoin exchange Mt. Gox, [received attention](https://news.ycombinator.com/item?id=7295932) on Hacker News recently. Given that Gox's spectacular $473 million downfall was supposedly caused by a bug in Karpeles's custom implementation of the Bitcoin protocol, people were understandably interested in checking the quality of his public source code.
 
-What we saw was not reassuring. In [one post](http://blog.magicaltux.net/2010/06/27/php-can-do-anything-what-about-some-ssh/), Karpeles describes a custom implementation of SSH2 which he wrote - in PHP - for his web hosting company. 
+What we saw was not reassuring. In [one post](https://web.archive.org/web/20140226001727/http://blog.magicaltux.net/2010/06/27/php-can-do-anything-what-about-some-ssh/), Karpeles describes a custom implementation of SSH2 which he wrote - in PHP - for his web hosting company. (emphasis mine)
 
-> With PHP I could write a fully working SSH server in only 3 days. ... My goal when writing this was to provide a replacement for the FTP protocol for the customers of my hosting service.
+> With PHP I could write a fully working SSH server in only 3 days. ... My goal when writing this was to provide a replacement for the FTP protocol **for the customers of my hosting service**.
 
 > As I was missing some functions to properly handle the initial Diffie-Hellman key exchange (and later to implement publickey authentication) I had to re-implement those in PHP.
 
@@ -22,19 +22,19 @@ I absolutely agree. Learning about cryptography in college didn't so much teach 
 
 So best practices were apparently not followed at Mt. Gox. In fact, later [it was alleged](http://www.wired.com/wiredenterprise/2014/03/bitcoin-exchange/) that developers at Mt. Gox would push changes directly to production, and didn't even use version control for the site's source code.
 
-Another of his blog posts is about [a tool](http://blog.magicaltux.net/2008/11/30/eve-online-pathfinder/) which he wrote - in PHP of course - to compute routes between star systems in the MMORPG [EVE Online](https://en.wikipedia.org/wiki/Eve_Online). In EVE, solar systems are connected to each other with portals called Stargates. The result is [a big graph](http://evemaps.dotlan.net/). Savvy players will try to take the shortest possible path to get from point A to point B by using a shortest-path algorithm to automate navigation.
+Another of his blog posts is about [a tool](https://web.archive.org/web/20140228080739/http://blog.magicaltux.net/2008/11/30/eve-online-pathfinder) which he wrote - in PHP of course - to compute routes between star systems in the MMORPG [EVE Online](https://en.wikipedia.org/wiki/Eve_Online). In EVE, solar systems are connected to each other with portals called Stargates. The result is [a big graph](http://evemaps.dotlan.net/). Savvy players will try to take the shortest possible path to get from point A to point B by using a shortest-path algorithm to automate navigation.
 
 ![Systems map in EVE Online](/images/eve-systems.png)
 
-I thought I'd hop on [the code criticism bandwagon](https://news.ycombinator.com/item?id=7332391) by addressing his EVE pathfinder. Although I could nitpick on matters of style, I don't think that's constructive. Instead, I want to focus on the core- that is, the [all-pairs shortest path solver](https://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths) which is the basis of his algorithm. The general idea is to generate an index which contains, for each system, the next hop to take in order to reach any given system. This uses O(n^2) space but allows efficient pathfinding between any two arbitrary systems in the universe. All of this is perfectly fine so far. The problem is how he goes about constructing this index.
+I thought I'd hop on [the bandwagon](https://news.ycombinator.com/item?id=7332391) by criticizing his EVE pathfinder. Although I could nitpick on matters of style, I'd rather focus on the core- that is, the [all-pairs shortest path solver](https://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths) which is the basis of his algorithm. The general idea is to generate an index which contains, for each system, the next hop to take in order to reach any given system. This uses O(n^2) space but allows efficient pathfinding between any two arbitrary systems in the universe. All of this is perfectly fine so far. The problem is how he goes about constructing this index.
 
 Based on my reading of his code, this appears to be his algorithm:
 
 1. Inform each system how to reach its adjacent systems.
-2. For each system, look for known paths to systems 1 hop away and advertise those paths to its adjacent systems.
-3. For each system, look for known paths to systems 2 hops away and advertise those paths to its adjacent systems.
-4. For each system, look for known paths to systems 3 hops away and advertise those paths to its adjacent systems.
-5. For each system, look for known paths to systems 4 hops away and advertise those paths to its adjacent systems.
+2. For each system `s`, look for locally-known paths to systems 1 hop away from `s` and advertise those paths to `s`'s adjacent systems.
+3. For each system `s`, look for locally-known paths to systems 2 hops away from `s` and advertise those paths to `s`'s adjacent systems.
+4. For each system `s`, look for locally-known paths to systems 3 hops away from `s` and advertise those paths to `s`'s adjacent systems.
+5. For each system `s`, look for locally-known paths to systems 4 hops away from `s` and advertise those paths to `s`'s adjacent systems.
 
 This continues for 256 steps, by which point MagicalTux hopes all systems have been informed of the shortest path to all other systems. Judging by a cusory search of the EVE forums, [this appears to be a valid assumption](http://oldforums.eveonline.com/?a=topic&threadID=1363890). 
 
@@ -45,7 +45,7 @@ This algorithm is essentially the [Bellman-Ford algorithm](https://en.wikipedia.
 * Use [Floyd-Warshall](https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm), optimized as best I can, instead of his algorithm.
 * Use OpenMP to parallelize the algorithm.
 
-I downloaded the jump connection data [helpfully provided](http://files.magicaltux.net/eveonline/) by MagicalTux - the [official data](http://community.eveonline.com/community/fansites/toolkit/) comes in a most unhelpful binary MSSQL format - and put it in [a CSV file](https://gist.github.com/briangordon/8fa812fecccad11e1f17) for easy parsing.
+I downloaded the jump connection data helpfully provided by MagicalTux - the [official data](http://community.eveonline.com/community/fansites/toolkit/) comes in an unusable binary MSSQL format - and put it in [a CSV file](https://gist.github.com/briangordon/8fa812fecccad11e1f17) for easy parsing.
 
 My complete EVE pathfinder implementation can be found [here](https://gist.github.com/briangordon/9330167). It doesn't require any extra space (asymptotically) to construct the index, which is nice. This is the core of the code where almost 100% of the running time is spent:
 
