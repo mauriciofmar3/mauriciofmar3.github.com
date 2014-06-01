@@ -1,10 +1,9 @@
 safe: false
 permalink: /:year/:month/:title.html
-pygments: true
+pygments: false
 markdown: kramdown
 kramdown:
-  use_coderay: false
+  use_coderay: true
   coderay:
-    enable_coderay: false
-    coderay_line_numbers: nil
-    coderay_css: class
+    enable_coderay: true
+    coderay_css: style
