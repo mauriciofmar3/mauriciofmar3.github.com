@@ -63,7 +63,18 @@ for(var i=0; i<5; i++) {
 }
 ~~~
 
-In this case too, a self-executing function declaration [solves the problem](http://jsfiddle.net/YLSn6/):
+First of all, it's important to note that variable and function declarations are [hoisted](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting) to the top of their scope, so the above code is equivalent to:
+
+~~~ javascript
+var toggler;
+for(var i=0; i<5; i++) {
+    toggler = $("<img/>", { "src": "http://www.famfamfam.com/lab/icons/silk/icons/cross.png" });
+    toggler.click(function () { toggler.attr("src", "http://www.famfamfam.com/lab/icons/silk/icons/tick.png"); });
+    $("#container").append(toggler);
+}
+~~~
+
+When you assign a new `<img>` to `toggler`, the reference is updated to point to the new object. And it's the *reference*, not the value, which is bound into the `click` closure. So the same reference is being updated over and over, and the same reference is being bound into the click `closure` each time. If we want to fix this problem, we can create a new reference each time [by using](http://jsfiddle.net/YLSn6/) a self-executing function declaration like before:
 
 ~~~ javascript
 for(var i=0; i<5; i++) {
@@ -74,5 +85,3 @@ for(var i=0; i<5; i++) {
     })(toggler);
 }
 ~~~
-
-In this case, the value of toggler is the address of the object it points to. The variable can move on to pointing at another object, as long as the address is preserved in the closure. The function call pushes this address onto the execution context when it is made, and it's *that* location in the execution context that's referred to by `t`.
