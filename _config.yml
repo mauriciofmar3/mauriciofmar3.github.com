@@ -3,7 +3,4 @@ permalink: /:year/:month/:title.html
 pygments: false
 markdown: kramdown
 kramdown:
-  use_coderay: true
-  coderay:
-    enable_coderay: true
-    coderay_css: style
+  use_coderay: false
