@@ -19,7 +19,6 @@ Unfortunately, the second variable in play - the *vertical* angle that the playe
 Because of the game's physics model, if the player gets up to speed and reaches the top of the ladder, then he or she will sail upward a short distance past the top before falling back down. By trial and error, I determined that it's impossible to clear more than 53 [units](https://developer.valvesoftware.com/wiki/Dimensions) using techniques 1 and 2, and it's imposible to clear more than 105 units using technique 4. **Those maximum distances can only be cleared at very close to top speed.** So I jump around trying to find the optimal vertical angle which will clear the first height at the bottom of the track. Then I let go of the mouse and record a climb the rest of the way up at top speed!
 
 Here are some recordings of the forward and diagonal methods. It takes about a minute to find the exact angle where it works, but I cut that part out.
-<br />
 
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/NNV6hE79g_s?autoplay=1&loop=1&playlist=NNV6hE79g_s&controls=0&showinfo=0"></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/lBFp3R90_Yc?autoplay=1&loop=1&playlist=lBFp3R90_Yc&controls=0&showinfo=0"></iframe></div>
 

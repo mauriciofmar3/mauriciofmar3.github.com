@@ -2,3 +2,9 @@ safe: false
 permalink: /:year/:month/:title.html
 pygments: true
 markdown: kramdown
+kramdown:
+  use_coderay: false
+  coderay:
+    enable_coderay: false
+    coderay_line_numbers: nil
+    coderay_css: class
