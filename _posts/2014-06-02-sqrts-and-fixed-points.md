@@ -62,17 +62,17 @@ This is called [the Babylonian method, or Heron's method](https://en.wikipedia.o
 
 Remember that before we said $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x_n}$$. Unfortunately if you iterate that function, you will not approach $$\sqrt{a}$$. Fixed point iteration doesn't always work and this is one such case. The math behind being able to tell whether an arbitrary function will converge to a fixed point under fixed point iteration is [complicated](https://en.wikipedia.org/wiki/Fixed-point_theorem). 
 
-Now it would be very simple to wrap the Babylonian method in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is the *y combinator*. You've probably heard of it due to the eponymous startup incubator founded by Lisp greybeard Paul Graham.
+Now it would be very simple to wrap the Babylonian method in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is the *Y combinator*. You've probably heard of it due to the eponymous startup incubator founded by Lisp greybeard Paul Graham.
 
 ![YCombinator logo](http://ycombinator.com/images/yc500.gif)
 
-This is the definition of the y combinator:
+This is the definition of the Y combinator:
 
 $$ \lambda f.(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
-The reason y is called a fixed-point combinator is because of what happens when you apply it to a function and reduce. By following the lambda calculus reduction rules you can find that the y combinator satisfies the equation $$y f = f (y f)$$. This matches the form $$something = f (something)$$ - the definition of a fixed point. So, $$y f$$ is a fixed point of $$f$$! Therefore all we have to do is apply the y combinator to obtain a fixed point of $$f$$. 
+The reason y is called a fixed-point combinator is because of what happens when you apply it to a function and reduce. By following the lambda calculus reduction rules you can find that the Y combinator satisfies the equation $$y f = f (y f)$$. This matches the form $$something = f (something)$$ - the definition of a fixed point. So, $$y f$$ is a fixed point of $$f$$! Therefore all we have to do is apply the Y combinator to obtain a fixed point of $$f$$. 
 
-Well, not really. The fixed point of a higher-order function $$f$$ isn't a number, it's another function: the function $$f'$$ which $$f$$ maps to $$f'$$. In other words, all the y combinator is doing is facilitating fixed-point iteration:
+Well, not really. The fixed point of a higher-order function $$f$$ isn't a number, it's another function: the function $$f'$$ which $$f$$ maps to $$f'$$. In other words, all the Y combinator is doing is facilitating fixed-point iteration:
 
 y f = f (y f)
     = f (f (y f))
@@ -82,11 +82,11 @@ y f = f (y f)
 
 And, as we know from the f(x) = a/x example, fixed point iteration doesn't actually always converge on a fixed point.
 
-By the way, it appears that this expansion will continue forever and never terminate. But that's because in step # of the derivation we assumed that we will always call the provided function. We need not always call it; instead we could check for a termination condition and return a value instead. 
+By the way, it appears that this expansion will continue forever and never terminate. But we can build a termination condition into the function $$f$$ so that it stops expanding. Let's see how that would work with the sqrt example. Our $$f$$ would look like this:
 
-Let's bring this back to the sqrt example. Our f would look like this:
-
-    function (originalValue, approxSqrt, callback) {
+~~~ javascript
+function (callback) {
+    function (originalValue, approxSqrt) {
         var improvedApproxSqrt = ???;
 
         var discrepancy = Math.abs(originalValue - (improvedApproxSqrt * improvedApproxSqrt));
@@ -98,8 +98,10 @@ Let's bring this back to the sqrt example. Our f would look like this:
 
         return ???;
     }
+}
+~~~
 
-How would we implement Y in JavaScript? Here's the Y combinator again, with an extra variable because our function takes two variables rather than oen:
+How would we implement Y in JavaScript? Here's the Y combinator again, with an extra variable because our function takes two variables rather than one:
 
 math
 
@@ -107,6 +109,6 @@ This corresponds pretty directly to a JavaScript function:
 
 code
 
-But when we run this on your function from above, we get infinite recursion. This is because lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) while JavaScript is [call by value](https://en.wikipedia.org/wiki/Call_by_value). In lambda calculus, $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. In JavaScript, the x function is *actually evaluated* with x as an argument. To solve this problem we need to eta-expand the y combinator to obtain the *applicative order* y combinator:
+But when we run this on your function from above, we get infinite recursion. This is because lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) while JavaScript is [call by value](https://en.wikipedia.org/wiki/Call_by_value). In lambda calculus, $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. In JavaScript, the x function is *actually evaluated* with x as an argument. To solve this problem we need to η-expand the Y combinator to obtain the *applicative order* Y combinator, also called the Z combinator:
 
 math
