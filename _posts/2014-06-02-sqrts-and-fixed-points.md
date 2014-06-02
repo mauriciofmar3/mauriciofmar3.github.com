@@ -50,9 +50,11 @@ It will eventually converge to a value near 0.7391:
 
 ![Plot 5](https://upload.wikimedia.org/wikipedia/commons/e/ea/Cosine_fixed_point.svg)
 
-Newton's method also converges when applied to the function f(x)=x^2-a (although not in general). The function we're going to iterate is the function we derived before:
+Another function which converges to a fixed point is the expression given by Newton's method applied to the function f(x)=x^2-a, which we derived before. If we rearrange the right side we obtain:
 
-single line of math
+$$ x_{n+1} = \frac{x_n{}^2+a}{2x_n} $$
+
+$$ x_{n+1} = \frac{1}{2}(x_n+\frac{a}{x_n}) $$
 
 This is called the Babylonian method, or Heron's method, and it was actually discovered long before Newton's method. The idea was that if _ is an overestimate to sqrt(x) then _ is an underestimate, and you can average them to get a pretty good approximation. Repeated iteration improves this approximation until it converges on the actual result. 
 
