@@ -10,7 +10,7 @@ There's [an old comment](https://news.ycombinator.com/item?id=571090) on HN that
 
 "Completely unrelated?" The problem is easily solved with binary search; is it inconceivable that a frontend developer would ever use binary search? For that matter, is this interview for a contract to build a single front-end, or for a full-time developer position which may continue indefinitely? Because if it's the latter, general problem solving questions are completely fair game. The company is going to need to make an investment of institutional knowledge in a new developer. If he or she can pivot to a new role as needed then the company may be able to avoid hiring someone new in the future, avoiding the need to bring another employee up to speed. There is legitimate value added by being able to solve problems outside of your expertise.
 
-Anyway, other than the obvious solution of binary search, how might we solve the problem of calculating $$\sqrt{a}$$? Let's first introduce the concept of a fixed point. A **fixed point** is a value which is unchanged by the function - that is, $$f(p) = p$$. For example, a fixed point of the sine function is 0 because $$\sin(0)=0$$. A fixed point of the cosine function is located around 0.739085133 because $$\cos(0.739085133)\approx0.739085133$$. In fact, if we plot the cosine function on top of $$f(p) = p$$ then we can see that they intersect at exactly that point:
+Anyway, other than the obvious solution of binary search, how might we solve the problem of calculating $$\sqrt{a}$$? Let's first introduce the concept of a **fixed point**. A fixed point is a value which is unchanged by the function - that is, $$f(p) = p$$. For example, a fixed point of the sine function is 0 because $$\sin(0)=0$$. A fixed point of the cosine function is located around 0.739085133 because $$\cos(0.739085133)\approx0.739085133$$. In fact, if we plot the cosine function on top of $$f(p) = p$$ then we can see that they intersect at exactly that point:
 
 ![Plot 1](/images/plot-0.png)
 
@@ -38,7 +38,7 @@ $$ x_{n+1} = x_n - \frac{x_n{}^2-a}{2x_n} $$
 
 $$ x_{n+1} = \frac{x_n{}^2+a}{2x_n} $$
 
-These are different functions but they converge to the same value. This is a plot of $$ x_{n+1} - x_n $$ for the two different functions:
+These are different functions but they have the same fixed point. This is a plot of $$ x_{n+1} - x_n $$ for the two different functions showing that they have the same zero:
 
 ![Plot 4](/images/plot-3.png)
 
