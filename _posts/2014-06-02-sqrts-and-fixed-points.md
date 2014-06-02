@@ -38,7 +38,7 @@ $$ x_{n+1} = x_n - \frac{x_n{}^2-a}{2x_n} $$
 
 $$ x_{n+1} = \frac{x_n{}^2+a}{2x_n} $$
 
-These are different functions but they have the same fixed point. This is a plot of $$ x_{n+1} - x_n $$ for the two different functions (with a=7) showing that they have the same zero:
+These are different functions but they have the same fixed point. This is a plot of $$ x_{n+1} - x_n $$ for the two different functions (with a=7) showing that they have the same zeros:
 
 ![Plot 4](/images/plot-3.svg)
 
