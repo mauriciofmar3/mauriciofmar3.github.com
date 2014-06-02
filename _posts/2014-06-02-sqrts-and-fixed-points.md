@@ -12,7 +12,7 @@ There's [an old comment](https://news.ycombinator.com/item?id=571090) on HN that
 
 Anyway, other than the obvious solution of binary search, how might we solve the problem of calculating $$\sqrt{a}$$? Let's first introduce the concept of a **fixed point**. A fixed point is a value which is unchanged by the function - that is, $$f(p) = p$$. For example, a fixed point of the sine function is 0 because $$\sin(0)=0$$. A fixed point of the cosine function is located around 0.739085133 because $$\cos(0.739085133)\approx0.739085133$$. In fact, if we plot the cosine function on top of $$f(p) = p$$ then we can see that they intersect at exactly that point:
 
-![Plot 1](/images/plot-0.png)
+![Plot 1](/images/plot-0.svg)
 
 One interesting fact which might be of use is that $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x}$$. We can therefore graph $$f(x)=\frac{a}{x}$$ to find its fixed point $$\sqrt{a}$$. Here's a plot for various values of a:
 
