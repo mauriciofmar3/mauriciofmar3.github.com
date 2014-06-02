@@ -14,13 +14,13 @@ Anyway, other than the obvious solution of binary search, how might we solve the
 
 ![Plot 1](/images/plot-0.png)
 
-We can do the same thing with $$f(x)=\frac{a}{x}$$ to find $$\sqrt{a}$$. Here's a plot for various values of a:
+We can do the same thing with $$f(x)=\frac{a}{x}$$ to find its fixed point $$\sqrt{a}$$. Here's a plot for various values of a:
 
 ![Plot 2](/images/plot-1.png)
 
 By subtracting x from the function it becomes a root finding problem:
 
-![Plot 2](/images/plot-2.png)
+![Plot 3](/images/plot-2.png)
 
 This we can solve with Newton's method:
 
@@ -28,15 +28,19 @@ $$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} $$
 
 $$ x_{n+1} = x_n - \frac{\frac{a}{x_n}-x_n}{-\frac{a}{x^{2}}-1} $$
 
+$$ x_{n+1} = \frac{2x_n}{1+\frac{a}{x_n{}^2}}
+
 Of course, we could have just used Newton's method from the beginning. If we're trying to calculate $$\sqrt{a}$$ then the value we're looking for is a zero of the function $$f(x)=x^{2}-a$$. In this case we have:
 
 $$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} $$
 
 $$ x_{n+1} = x_n - \frac{x_n{}^2-a}{2x_n} $$
 
-$$ x_{n+1} = x_n - \frac{\frac{a}{x_n}-x_n}{-\frac{a}{x^{2}}-1} $$
+$$ x_{n+1} = \frac{x_n{}^2+a}{2x_n} $$
 
-Reassuringly this is the same answer as before.
+These are different functions but they converge to the same value. This is a plot of $$ x_{n+1} - x_n $$ for the two different functions:
+
+![Plot 4](/images/plot-3.png)
 
 Newton's method corresponds closely to a concept called fixed point iteration. In fixed point iteration, we repeatedly evaluate a function and feed its output back into its input. Eventually we hope it will converge on a fixed point. We mentioned the cosine function earlier; this is one such function which always converges on a particular fixed point. Enter any value into a scientific calculator and repeatedly press the cosine button:
 
