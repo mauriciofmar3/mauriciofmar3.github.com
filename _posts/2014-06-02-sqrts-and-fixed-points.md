@@ -2,6 +2,7 @@
 layout: post
 title: Square roots and fixed points
 tags: programming math
+published: false
 ---
 
 There's [an old comment](https://news.ycombinator.com/item?id=571090) on HN that annoys me. In it, a developer whines eloquently and bitterly about his experience being stumped by a common interview question: "write an algorithm for computing the square root of a number." 
@@ -82,14 +83,14 @@ y\ f &=& f\ (y\ f)\\
     && ... 
 \end{eqnarray*}$$
 
-And, as we know from the $$f(x)=\frac{a}{x}$$ example, fixed point iteration doesn't actually always converge on a fixed point.
+And, as we know from the $$f(x)=\frac{a}{x}$$ example, fixed point iteration doesn't always converge on a fixed point.
 
 By the way, it appears that this expansion will continue forever and never terminate. But we can build a termination condition into the function $$f$$ so that it stops expanding. Let's see how that would work with the sqrt example. Our $$f$$ would look like this:
 
 ~~~ javascript
 function (callback) {
     function (originalValue, approxSqrt) {
-        var improvedApproxSqrt = ???;
+        var improvedApproxSqrt = (approxSqrt + (originalValue / approxSqrt)) / 2;
 
         var discrepancy = Math.abs(originalValue - (improvedApproxSqrt * improvedApproxSqrt));
 
