@@ -10,7 +10,7 @@ There's [an old comment](https://news.ycombinator.com/item?id=571090) on HN that
 
 "Completely unrelated?" The problem is easily solved with binary search; is it inconceivable that a frontend developer would ever use binary search? For that matter, is this interview for a contract to build a single front-end, or for a full-time developer position which may continue indefinitely? Because if it's the latter, general problem solving questions are completely fair game. The company is going to need to make an investment of institutional knowledge in a new developer. If he or she can pivot to a new role as needed then the company may be able to avoid hiring someone new in the future, avoiding the need to bring another employee up to speed. There is legitimate value added by being able to solve problems outside of your expertise.
 
-Anyway, other than the obvious solution of binary search, how might we solve the problem of calculating $$\sqrt{a}$$? One interesting fact is that $$\sqrt{a}$$ is the fixed point of the function $$f(x)=\frac{a}{x}$$. A fixed point is a value which is unchanged by the function - that is, $$f(p) = p$$. For example, the fixed point of the cosine function is approximately $$0.739085133$$ because $$\cos(0.739085133) \approx 0.739085133$$. If we plot the cosine function on top of $$f(p) = p$$ then we can see that they intersect at exactly that point:
+Anyway, other than the obvious solution of binary search, how might we solve the problem of calculating $$\sqrt{a}$$? One interesting fact is that $$\sqrt{a}$$ is the fixed point of the function $$f(x)=\frac{a}{x}$$. A **fixed point** is a value which is unchanged by the function - that is, $$f(p) = p$$. For example, the fixed point of the cosine function is approximately $$0.739085133$$ because $$\cos(0.739085133) \approx 0.739085133$$. If we plot the cosine function on top of $$f(p) = p$$ then we can see that they intersect at exactly that point:
 
 ![Plot 1](/images/plot-0.png)
 
@@ -42,7 +42,7 @@ These are different functions but they converge to the same value. This is a plo
 
 ![Plot 4](/images/plot-3.png)
 
-Newton's method corresponds closely to a concept called fixed point iteration. In fixed point iteration, we repeatedly evaluate a function and feed its output back into its input. Eventually we hope it will converge on a fixed point. We mentioned the cosine function earlier; this is one such function which always converges on a particular fixed point. Enter any value into a scientific calculator and repeatedly press the cosine button:
+Newton's method corresponds closely to a concept called **fixed point iteration**. In fixed point iteration, we repeatedly evaluate a function and feed its output back into its input. Eventually we hope it will converge on a fixed point. We mentioned the cosine function earlier; this is one such function which always converges on a particular fixed point. Enter any value into a scientific calculator and repeatedly press the cosine button:
 
 1.0000
 0.5403
