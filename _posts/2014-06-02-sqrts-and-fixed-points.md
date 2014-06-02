@@ -68,7 +68,7 @@ Now it would be very simple to wrap the Babylonian method in a loop and perform 
 
 This is the definition of the Y combinator:
 
-$$ \lambda f.(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
+$$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
 The reason y is called a fixed-point combinator is because of what happens when you apply it to a function and reduce. By following the lambda calculus reduction rules you can find that the Y combinator satisfies the equation $$y f = f (y f)$$. This matches the form $$something = f (something)$$ - the definition of a fixed point. So, $$y f$$ is a fixed point of $$f$$! Therefore all we have to do is apply the Y combinator to obtain a fixed point of $$f$$. 
 
@@ -105,7 +105,7 @@ function (callback) {
 
 How would we implement Y in JavaScript? Here's the Y combinator again, with an extra variable added because our function takes two variables rather than one:
 
-$$ \lambda f.\!(\lambda x.\!f\ (x\ x))\ (\lambda x.\!f\ (x\ x)) $$
+$$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
 This corresponds pretty directly to a JavaScript function:
 
@@ -113,7 +113,7 @@ code
 
 Unfortunately, when we try to use this version of the Y combinator, we get a stack overflow due to infinite recursion. This is because lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) while JavaScript is [call by value](https://en.wikipedia.org/wiki/Call_by_value). In lambda calculus, $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. In JavaScript, the x function is *actually evaluated* with x as an argument. To solve this problem we need to η-expand the Y combinator to obtain the *applicative order* Y combinator, also called the Z combinator:
 
-$$ \lambda r.(\lambda f.(f\ f))\ \lambda f.(r\ \lambda x.((f\ f)\ x)) $$
+$$ \lambda r.\!(\lambda f.\!(f\ f))\ \lambda f.\!(r\ \lambda x.\!((f\ f)\ x)) $$
 
 Here's the corresponding JavaScript code:
 
