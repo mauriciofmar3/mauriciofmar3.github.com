@@ -14,7 +14,7 @@ Anyway, other than the obvious solution of binary search, how might we solve the
 
 ![Plot 1](/images/plot-0.png)
 
-Of course we can do the same thing with $$f(x)=\frac{a}{x}$$. Here's a plot for various values of a:
+We can do the same thing with $$f(x)=\frac{a}{x}$$ to find $$\sqrt{a}$$. Here's a plot for various values of a:
 
 ![Plot 2](/images/plot-1.png)
 
