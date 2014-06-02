@@ -105,7 +105,7 @@ function (callback) {
 
 How would we implement Y in JavaScript? Here's the Y combinator again, with an extra variable added because our function takes two variables rather than one:
 
-$$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
+$$ \lambda f.\!(\lambda x.\!f\ (x\ x))\ (\lambda x.\!f\ (x\ x)) $$
 
 This corresponds pretty directly to a JavaScript function:
 
