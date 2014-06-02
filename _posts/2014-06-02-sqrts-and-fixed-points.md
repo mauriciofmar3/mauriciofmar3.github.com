@@ -75,10 +75,10 @@ The reason y is called a fixed-point combinator is because of what happens when 
 Well, not really. The fixed point of a higher-order function $$f$$ isn't a number, it's another function: the function $$f'$$ which $$f$$ maps to $$f'$$. In other words, all the Y combinator is doing is facilitating fixed-point iteration:
 
 $$ \begin{eqnarray*}
-y f &=& f (y f)\\
-    &=& f (f (y f))\\
-    &=& f (f (f (y f)))\\
-    &=& f (f (f (f (y f))))\\
+y\ f &=& f\ (y\ f)\\
+    &=& f\ (f\ (y\ f))\\
+    &=& f\ (f\ (f\ (y\ f)))\\
+    &=& f\ (f\ (f\ (f\ (y\ f))))\\
     && ... 
 \end{eqnarray*}$$
 
