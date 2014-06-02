@@ -68,7 +68,7 @@ Now it would be very simple to wrap the Babylonian method in a loop and perform 
 
 This is the definition of the y combinator:
 
-math
+$$ \lambda f.(\lambda x.f (x x)) (\lambda x.f (x x)) $$
 
 The reason y is called a fixed-point combinator is because of what happens when you apply it to a function and reduce:
 
