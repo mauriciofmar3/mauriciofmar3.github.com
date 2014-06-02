@@ -62,7 +62,7 @@ This is called [the Babylonian method, or Heron's method](https://en.wikipedia.o
 
 Remember that before we said $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x_n}$$. Unfortunately if you iterate that function, you will not approach $$\sqrt{a}$$. Fixed point iteration doesn't always work and this is one such case. The math behind being able to tell whether an arbitrary function will converge to a fixed point under fixed point iteration is [complicated](https://en.wikipedia.org/wiki/Fixed-point_theorem). 
 
-Now it would be very simple to wrap this function in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is called the *y combinator*. You've probably heard of it due to the eponymous startup incubator founded by old Lisp greybeard Paul Graham.
+Now it would be very simple to wrap the Babylonian method in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is the *y combinator*. You've probably heard of it due to the eponymous startup incubator founded by Lisp greybeard Paul Graham.
 
 ![YCombinator logo](http://ycombinator.com/images/yc500.gif)
 
