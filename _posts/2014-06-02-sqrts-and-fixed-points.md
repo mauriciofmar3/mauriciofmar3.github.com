@@ -32,7 +32,7 @@ Of course, we could have just used Newton's method from the beginning. If we're 
 
 $$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} $$
 
-$$ x_{n+1} = x_n - \frac{x_{n}^2-a}{2x_n} $$
+$$ x_{n+1} = x_n - \frac{x_n{}^2-a}{2x_n} $$
 
 $$ x_{n+1} = x_n - \frac{\frac{a}{x_n}-x_n}{-\frac{a}{x^{2}}-1} $$
 
