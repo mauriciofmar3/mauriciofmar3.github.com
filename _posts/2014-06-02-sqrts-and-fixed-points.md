@@ -82,7 +82,7 @@ y\ f &=& f\ (y\ f)\\
     && ... 
 \end{eqnarray*}$$
 
-And, as we know from the f(x) = a/x example, fixed point iteration doesn't actually always converge on a fixed point.
+And, as we know from the $$f(x)=\frac{a}{x}$$ example, fixed point iteration doesn't actually always converge on a fixed point.
 
 By the way, it appears that this expansion will continue forever and never terminate. But we can build a termination condition into the function $$f$$ so that it stops expanding. Let's see how that would work with the sqrt example. Our $$f$$ would look like this:
 
@@ -105,13 +105,13 @@ function (callback) {
 
 How would we implement Y in JavaScript? Here's the Y combinator again, with an extra variable added because our function takes two variables rather than one:
 
-$$ \lambda f.(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
+$$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
 This corresponds pretty directly to a JavaScript function:
 
 code
 
-But when we run this on your function from above, we get infinite recursion. This is because lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) while JavaScript is [call by value](https://en.wikipedia.org/wiki/Call_by_value). In lambda calculus, $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. In JavaScript, the x function is *actually evaluated* with x as an argument. To solve this problem we need to η-expand the Y combinator to obtain the *applicative order* Y combinator, also called the Z combinator:
+Unfortunately, when we try to use this version of the Y combinator, we get a stack overflow due to infinite recursion. This is because lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) while JavaScript is [call by value](https://en.wikipedia.org/wiki/Call_by_value). In lambda calculus, $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. In JavaScript, the x function is *actually evaluated* with x as an argument. To solve this problem we need to η-expand the Y combinator to obtain the *applicative order* Y combinator, also called the Z combinator:
 
 $$ \lambda r.(\lambda f.(f\ f))\ \lambda f.(r\ \lambda x.((f\ f)\ x)) $$
 
