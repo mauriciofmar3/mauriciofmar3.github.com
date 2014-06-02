@@ -16,11 +16,11 @@ Anyway, other than the obvious solution of binary search, how might we solve the
 
 One interesting fact which might be of use is that $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x}$$. We can therefore graph $$f(x)=\frac{a}{x}$$ to find its fixed point $$\sqrt{a}$$. Here's a plot for various values of a:
 
-![Plot 2](/images/plot-1.png)
+![Plot 2](/images/plot-1.svg)
 
 By subtracting x from the function it becomes a root finding problem:
 
-![Plot 3](/images/plot-2.png)
+![Plot 3](/images/plot-2.svg)
 
 This we can solve with Newton's method:
 
@@ -38,9 +38,9 @@ $$ x_{n+1} = x_n - \frac{x_n{}^2-a}{2x_n} $$
 
 $$ x_{n+1} = \frac{x_n{}^2+a}{2x_n} $$
 
-These are different functions but they have the same fixed point. This is a plot of $$ x_{n+1} - x_n $$ for the two different functions showing that they have the same zero:
+These are different functions but they have the same fixed point. This is a plot of $$ x_{n+1} - x_n $$ for the two different functions (with a=7) showing that they have the same zero:
 
-![Plot 4](/images/plot-3.png)
+![Plot 4](/images/plot-3.svg)
 
 Newton's method corresponds closely to a concept called **fixed point iteration**. In fixed point iteration, we repeatedly evaluate a function and feed its output back into its input. Eventually we hope it will converge on a fixed point. We mentioned the cosine function earlier; this is one such function which always converges on a particular fixed point. Enter any value into a scientific calculator and repeatedly press the cosine button:
 
