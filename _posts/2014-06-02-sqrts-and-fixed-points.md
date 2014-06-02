@@ -44,9 +44,13 @@ These are different functions but they have the same fixed point. This is a plot
 
 Newton's method corresponds closely to a concept called **fixed point iteration**. In fixed point iteration, we repeatedly evaluate a function and feed its output back into its input. Eventually we hope it will converge on a fixed point. We mentioned the cosine function earlier; this is one such function which always converges on a particular fixed point. Enter any value into a scientific calculator and repeatedly press the cosine button:
 
-<div style="text-align:center">1.0000,0.5403,0.8575,0.6542,0.7934,0.7013,0.7639,0.7221,0.7504,0.7314,0.7442,0.7356</div>
+<div style="text-align:center">-1.0000,0.5403,0.8575,0.6542,0.7934,0.7013,0.7639,0.7221,0.7504,0.7314</div>
 
-It will eventually converge to a value near 0.7391. Newton's method also converges when applied to the function f(x)=x^2-a (although not in general). The function we're going to iterate is the function we derived before:
+It will eventually converge to a value near 0.7391.
+
+![Plot 5](https://upload.wikimedia.org/wikipedia/commons/e/ea/Cosine_fixed_point.svg)
+
+Newton's method also converges when applied to the function f(x)=x^2-a (although not in general). The function we're going to iterate is the function we derived before:
 
 single line of math
 
