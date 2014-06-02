@@ -64,7 +64,7 @@ Remember that before we said $$\sqrt{a}$$ is a fixed point of the function $$f(x
 
 Now it would be very simple to wrap this function in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is called the *y combinator*. You've probably heard of it due to the eponymous startup incubator founded by old Lisp greybeard Paul Graham.
 
-http://ycombinator.com/images/yc500.gif
+![YCombinator logo](/images/yclogo.png)
 
 This is the definition of the y combinator:
 
