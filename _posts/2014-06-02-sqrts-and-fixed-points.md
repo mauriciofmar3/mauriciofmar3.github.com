@@ -50,9 +50,11 @@ It will eventually converge to a value near 0.7391:
 
 ![Plot 5](https://upload.wikimedia.org/wikipedia/commons/e/ea/Cosine_fixed_point.svg)
 
-Another function which converges to a fixed point is the expression given by Newton's method applied to the function f(x)=x^2-a, which we derived before. If we rearrange the right side we obtain:
+Another function which converges to a fixed point is the expression given by Newton's method applied to the function $$f(x)=x^2-a$$, which we derived before:
 
 $$ x_{n+1} = \frac{x_n{}^2+a}{2x_n} $$
+
+If we rearrange the right side we obtain:
 
 $$ x_{n+1} = \frac{1}{2}(x_n+\frac{a}{x_n}) $$
 
