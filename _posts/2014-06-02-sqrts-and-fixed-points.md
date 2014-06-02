@@ -101,9 +101,9 @@ function (callback) {
 }
 ~~~
 
-How would we implement Y in JavaScript? Here's the Y combinator again, with an extra variable because our function takes two variables rather than one:
+How would we implement Y in JavaScript? Here's the Y combinator again, with an extra variable added because our function takes two variables rather than one:
 
-math
+$$ \lambda f.(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
 This corresponds pretty directly to a JavaScript function:
 
@@ -111,4 +111,11 @@ code
 
 But when we run this on your function from above, we get infinite recursion. This is because lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) while JavaScript is [call by value](https://en.wikipedia.org/wiki/Call_by_value). In lambda calculus, $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. In JavaScript, the x function is *actually evaluated* with x as an argument. To solve this problem we need to η-expand the Y combinator to obtain the *applicative order* Y combinator, also called the Z combinator:
 
-math
+$$ \lambda r.(\lambda f.(f\ f))\ \lambda f.(r\ \lambda x.((f\ f)\ x)) $$
+
+Here's the corresponding JavaScript code:
+
+code
+
+Now we can see it working:
+
