@@ -88,37 +88,84 @@ And, as we know from the $$f(x)=\frac{a}{x}$$ example, fixed point iteration doe
 By the way, it appears that this expansion will continue forever and never terminate. But we can build a termination condition into the function $$f$$ so that it stops expanding. Let's see how that would work with the sqrt example. Our $$f$$ would look like this:
 
 ~~~ javascript
-function (callback) {
-    function (originalValue, approxSqrt) {
+function step (callback) {
+    return function (originalValue, approxSqrt) {
         var improvedApproxSqrt = (approxSqrt + (originalValue / approxSqrt)) / 2;
 
         var discrepancy = Math.abs(originalValue - (improvedApproxSqrt * improvedApproxSqrt));
 
         // Termination condition
         if(discrepancy < 0.00001) {
-            return approxSqrt;
+            return improvedApproxSqrt;
         }
 
-        return ???;
-    }
+        return callback(originalValue, improvedApproxSqrt);
+    };
 }
 ~~~
 
-How would we implement Y in JavaScript? Here's the Y combinator again, with an extra variable added because our function takes two variables rather than one:
+How would we implement Y in JavaScript? Here's the Y combinator again:
 
 $$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
 This corresponds pretty directly to a JavaScript function:
 
-code
+~~~ javascript
+function Y(f) {
+    return (function (x) {
+        return f(x(x));
+    })(function (x) {
+        return f(x(x));
+    });
+}
+~~~
 
-Unfortunately, when we try to use this version of the Y combinator, we get a stack overflow due to infinite recursion. This is because lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) while JavaScript is [call by value](https://en.wikipedia.org/wiki/Call_by_value). In lambda calculus, $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. In JavaScript, the x function is *actually evaluated* with x as an argument. To solve this problem we need to η-expand the Y combinator to obtain the *applicative order* Y combinator, also called the Z combinator:
+Unfortunately, when we try to use this version of the Y combinator, we get a stack overflow. If you trace out the execution you'll see that `x(x)` must be evaluated in order to get a final return value for `Y`, and this causes infinite recursion. The reason this works at all in lambda calculus is that lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) so $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. JavaScript, on the other hand, is [call by value](https://en.wikipedia.org/wiki/Call_by_value), so the x function is *actually evaluated* with x as an argument. 
 
-$$ \lambda r.\!(\lambda f.\!(f\ f))\ \lambda f.\!(r\ \lambda x.\!((f\ f)\ x)) $$
+If we η-reduce the Y combinator then we obtain an alternate fixed-point combinator, called the Z combinator, which contains an extra layer of indirection and prevents runaway recursion:
 
-Here's the corresponding JavaScript code:
+$$ \lambda f.\!(\lambda x.f\ (\lambda v.\!((x\ x)\ v)))\ (\lambda x.f\ (\lambda v.\!((x\ x)\ v))) $$
 
-code
+Here's the JavaScript code corresponding to the Z combinator:
+
+~~~ javascript
+function Z(f) {
+    return (function (x) { 
+        return f(function (v) { return x(x)(v); }); 
+    })(function (x) {
+        return f(function (v) { return x(x)(v); });
+    });
+}
+~~~
+
+We still have a bit of a problem: our step function takes two variables, while Z only calls it with one. So let's modify Z:
+
+~~~ javascript
+function Z(f) {
+    return (function (x) { 
+        return f(function (v1, v2) { return x(x)(v1, v2); }); 
+    })(function (x) {
+        return f(function (v1, v2) { return x(x)(v1, v2); });
+    });
+}
+~~~
 
 Now we can see it working:
 
+~~~
+> var sqrt = Z(step);
+undefined
+> sqrt(2, 1);
+1.4142156862745097
+~~~
+
+It's rather awkward to always have to provide a starting estimate, so we can add a wrapper which always guesses 1 to start:
+
+~~~
+> function sqrt (num) { return Z(step)(num, 1); }
+undefined
+> sqrt(2)
+1.4142156862745097
+~~~
+
+This is exactly the kind of tour of ideas enabled by a question like "give me an algorithm for computing the square root of a number." Even if you know nothing about numerical analysis, you should at least be able to come up with some ideas for approaching the problem. Petulantly hanging up on the interviewer and deciding he's not worth your time for asking such a question is simply childish.
