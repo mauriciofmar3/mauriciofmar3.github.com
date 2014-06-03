@@ -37,7 +37,7 @@ $$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} $$
 
 $$ x_{n+1} = x_n - \frac{\frac{a}{x_n}-x_n}{-\frac{a}{x^{2}}-1} $$
 
-$$ x_{n+1} = \frac{2x_n}{1+\frac{a}{x_n{}^2}} $$
+$$ x_{n+1} = \frac{2x_n{}^3}{x_n{}^2+a} $$
 
 Of course, we could have just used Newton's method from the beginning. If we're trying to calculate $$\sqrt{a}$$ then the value we're looking for is a zero of the function $$f(x)=x^{2}-a$$. In this case we have:
 
