@@ -79,9 +79,9 @@ This is the [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus) def
 
 $$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
-The reason y is called a fixed-point combinator is because of what happens when you apply it to a function and reduce. By following the lambda calculus reduction rules you can find that the Y combinator satisfies the equation $$y f = f (y f)$$. This matches the form $$something = f (something)$$ - the definition of a fixed point. So, $$y f$$ is a fixed point of $$f$$! Therefore all we have to do is apply the Y combinator to obtain a fixed point of $$f$$. 
+The reason y is called a fixed-point combinator is because of what happens when you apply it to a function and reduce. By following the lambda calculus reduction rules you can find that the Y combinator satisfies the equation $$y\ f = f\ (y\ f)$$. This matches the form $$something = f\ (something)$$ - the definition of a fixed point. So, $$y\ f$$ is a fixed point of $$f$$! Therefore all we have to do is apply the Y combinator to obtain a fixed point of $$f$$, right?. 
 
-Well, not really. The fixed point of a higher-order function $$f$$ isn't a number, it's another function: the function $$f'$$ which $$f$$ maps to $$f'$$. In other words, all the Y combinator is doing is facilitating fixed-point iteration:
+Well, not really. The $$f$$ takes and returns a function so the fixed point of $$f$$ isn't a number at all, it's the function $$f'$$ which $$f$$ maps to $$f'$$. In other words, all the Y combinator is doing is facilitating fixed-point iteration:
 
 $$ \begin{eqnarray*}
 y\ f &=& f\ (y\ f)\\
