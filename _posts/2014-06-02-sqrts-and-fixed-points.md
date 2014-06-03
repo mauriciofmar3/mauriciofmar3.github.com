@@ -71,7 +71,7 @@ This is called the Babylonian method, or Heron's method, and it was actually dis
 
 Remember that before we said $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x_n}$$. Unfortunately if you iterate that function, you will not approach $$\sqrt{a}$$. Fixed point iteration doesn't always work and this is one such case. The math behind being able to tell whether an arbitrary function will converge to a fixed point under fixed point iteration is [complicated](https://en.wikipedia.org/wiki/Fixed-point_theorem). 
 
-Now it would be very simple to wrap the Babylonian method in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is the *Y combinator*. You've probably heard of it due to [the eponymous startup incubator](https://en.wikipedia.org/wiki/Y_Combinator_(company)) founded by Lisp greybeard [Paul Graham](http://paulgraham.com/articles.html).
+Now it would be very simple to wrap the Babylonian method in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is the *Y combinator*. You've probably heard of it due to [the eponymous startup incubator](https://en.wikipedia.org/wiki/Y_Combinator_(company)) founded by Lisp greybeard Paul Graham, of the famous [Paul Graham essays](http://paulgraham.com/articles.html).
 
 ![YCombinator logo](http://ycombinator.com/images/yc500.gif)
 
@@ -132,7 +132,7 @@ function Y(f) {
 }
 ~~~
 
-Unfortunately, when we try to use this version of the Y combinator, we get a stack overflow. If you trace out the execution you'll see that `x(x)` must be evaluated in order to get a final return value for `Y`, and this causes infinite recursion. The reason this works at all in lambda calculus is that lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) so $$f (x x)$$ is evaluated by expanding the *definition* of $$x x$$ and passing that function to f. JavaScript, on the other hand, is [call by value](https://en.wikipedia.org/wiki/Call_by_value), so the x function is *actually evaluated* with x as an argument. 
+Unfortunately, when we try to use this version of the Y combinator, we get a stack overflow. If you trace out the execution you'll see that `x(x)` must be evaluated in order to get a final return value for `Y`, and this causes infinite recursion. The reason this works at all in lambda calculus is that lambda calculus is [call by name](https://en.wikipedia.org/wiki/Call_by_name) so $$f (x\ x)$$ is evaluated by expanding the *definition* of $$x\ x$$ and passing that function to f. JavaScript, on the other hand, is [call by value](https://en.wikipedia.org/wiki/Call_by_value), so the x function is *actually evaluated* with x as an argument. 
 
 If we η-reduce the Y combinator then we obtain an alternate fixed-point combinator, called the Z combinator, which contains an extra layer of indirection and prevents runaway recursion:
 
