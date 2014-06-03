@@ -96,11 +96,13 @@ It appears that this expansion will continue forever and never terminate. But we
 ~~~ javascript
 function step (callback) {
     return function (originalValue, approxSqrt) {
-        // Babylonian method formula to improve our approximation of the square root of originalValue.
+        // Babylonian method formula to improve our approximation of the square root 
+        // of originalValue.
         var improvedApproxSqrt = (approxSqrt + (originalValue / approxSqrt)) / 2;
 
         // How far off the mark we are.
-        var discrepancy = Math.abs(originalValue - (improvedApproxSqrt * improvedApproxSqrt));
+        var discrepancy = Math.abs(originalValue - 
+                                (improvedApproxSqrt * improvedApproxSqrt));
 
         // Termination condition
         if(discrepancy < 0.00001) {
@@ -163,7 +165,7 @@ Now we can see it working:
 ~~~
 > var sqrt = Z(step);
 undefined
-> sqrt(2, 1);
+> sqrt(2, 1); // sqrt of 2, with a starting estimate of 1
 1.4142156862745097
 ~~~
 
