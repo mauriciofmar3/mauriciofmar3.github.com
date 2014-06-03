@@ -91,7 +91,7 @@ y\ f &=& f\ (y\ f)\\
      && ... 
 \end{eqnarray*}$$
 
-It appears that this expansion will continue forever and never terminate. But we can build a termination condition into the function $$f$$ so that it stops expanding. Let's see how that would work with the sqrt example. Our $$f$$ would look like this:
+It appears that this expansion will continue forever and never terminate. But we can build a termination condition into the function $$f$$ so that it stops expanding. Let's see how that would work with the sqrt example. Our $$f$$ could look like this in JavaScript:
 
 ~~~ javascript
 function step (callback) {
@@ -112,7 +112,7 @@ function step (callback) {
 }
 ~~~
 
-How would we implement Y in JavaScript? Here's the Y combinator again:
+Now we need to implement the Y combinator in JavaScript. How would it look? Here's the Y combinator in lambda calculus again:
 
 $$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
