@@ -65,7 +65,7 @@ $$ x_{n+1} = \frac{x_n{}^2+a}{2x_n} $$
 
 If we rearrange the right side we obtain:
 
-$$ x_{n+1} = \frac{1}{2}(x_n+\frac{a}{x_n}) $$
+$$ x_{n+1} = \frac{1}{2}\left(x_n+\frac{a}{x_n}\right) $$
 
 This is called [the Babylonian method, or Heron's method](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method), and it was actually discovered long before Newton's method. The idea was that if $$x_n$$ is an overestimate to $$\sqrt{a}$$ then $$\frac{a}{x_n}$$ is an underestimate, and you can average them to get a pretty good approximation. Repeated iteration improves this approximation until it converges on $$\sqrt{x}$$, which we know is a fixed point.
 
