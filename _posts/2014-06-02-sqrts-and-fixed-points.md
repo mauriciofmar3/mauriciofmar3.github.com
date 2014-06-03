@@ -2,7 +2,7 @@
 layout: post
 title: Square roots and fixed points
 tags: programming math
-published: false
+published: true
 ---
 
 There's [an old comment](https://news.ycombinator.com/item?id=571090) on HN that annoys me. In it, a developer whines eloquently and bitterly about his experience being stumped by a common interview question: "write an algorithm for computing the square root of a number." 
