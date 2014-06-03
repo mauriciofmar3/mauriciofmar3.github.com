@@ -31,10 +31,10 @@ I thought I'd hop on [the bandwagon](https://news.ycombinator.com/item?id=733239
 Based on my reading of his code, this appears to be his algorithm:
 
 1. Inform each system how to reach its adjacent systems.
-2. For each system `s`, look for locally-known paths to systems 1 hop away from `s` and advertise those paths to `s`'s adjacent systems.
-3. For each system `s`, look for locally-known paths to systems 2 hops away from `s` and advertise those paths to `s`'s adjacent systems.
-4. For each system `s`, look for locally-known paths to systems 3 hops away from `s` and advertise those paths to `s`'s adjacent systems.
-5. For each system `s`, look for locally-known paths to systems 4 hops away from `s` and advertise those paths to `s`'s adjacent systems.
+2. From each system `s`, collect the best known paths to systems 1 hop away and advertise them to `s`'s adjacent systems.
+3. From each system `s`, collect the best known paths to systems 2 hops away and advertise them to `s`'s adjacent systems.
+4. From each system `s`, collect the best known paths to systems 3 hops away and advertise them to `s`'s adjacent systems.
+5. From each system `s`, collect the best known paths to systems 4 hops away and advertise them to `s`'s adjacent systems.
 
 This continues for 256 steps, by which point MagicalTux hopes all systems have been informed of the shortest path to all other systems. Judging by a cusory search of the EVE forums, [this appears to be a valid assumption](http://oldforums.eveonline.com/?a=topic&threadID=1363890). 
 
