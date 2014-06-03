@@ -67,7 +67,7 @@ If we rearrange the right side we obtain:
 
 $$ x_{n+1} = \frac{1}{2}\left(x_n+\frac{a}{x_n}\right) $$
 
-This is called [the Babylonian method, or Heron's method](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method), and it was actually discovered long before Newton's method. The idea was that if $$x_n$$ is an overestimate to $$\sqrt{a}$$ then $$\frac{a}{x_n}$$ is an underestimate, and you can average them to get a pretty good approximation. Repeated iteration improves this approximation until it converges on $$\sqrt{x}$$, which we know is a fixed point.
+This is called the Babylonian method, or Heron's method, and it was actually discovered long before Newton's method. The idea was that if $$x_n$$ is an overestimate to $$\sqrt{a}$$ then $$\frac{a}{x_n}$$ is an underestimate, and you can average them to get a better approximation. Repeated iteration improves this approximation until it converges on $$\sqrt{x}$$, which we know is a fixed point.
 
 Remember that before we said $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x_n}$$. Unfortunately if you iterate that function, you will not approach $$\sqrt{a}$$. Fixed point iteration doesn't always work and this is one such case. The math behind being able to tell whether an arbitrary function will converge to a fixed point under fixed point iteration is [complicated](https://en.wikipedia.org/wiki/Fixed-point_theorem). 
 
