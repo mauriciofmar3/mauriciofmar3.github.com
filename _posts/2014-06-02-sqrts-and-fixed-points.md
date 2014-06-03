@@ -15,7 +15,16 @@ Anyway, other than the obvious solution of binary search, how might we solve the
 
 ![Plot 1](/images/plot-0.svg)
 
-One interesting fact which might be of use is that $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x}$$. We can therefore graph $$f(x)=\frac{a}{x}$$ to find its fixed point $$\sqrt{a}$$. Here's a plot for various values of a:
+One interesting fact which might be of use is that $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x}$$:
+
+$$ \begin{eqnarray*}
+f(\sqrt{a}) &=& \frac{a}{\sqrt{a}}\\
+            &=& a^1a^{-\nicefrac{1}{2}}\\
+            &=& a^(1-\nicefrac{1}{2})\\
+            &=& a^(\nicefrac{1}{2})\\
+            &=& \sqrt{a}
+
+We can therefore graph $$f(x)=\frac{a}{x}$$ to find its fixed point $$\sqrt{a}$$. Here's a plot for various values of a:
 
 ![Plot 2](/images/plot-1.svg)
 
@@ -77,10 +86,10 @@ Well, not really. The fixed point of a higher-order function $$f$$ isn't a numbe
 
 $$ \begin{eqnarray*}
 y\ f &=& f\ (y\ f)\\
-    &=& f\ (f\ (y\ f))\\
-    &=& f\ (f\ (f\ (y\ f)))\\
-    &=& f\ (f\ (f\ (f\ (y\ f))))\\
-    && ... 
+     &=& f\ (f\ (y\ f))\\
+     &=& f\ (f\ (f\ (y\ f)))\\
+     &=& f\ (f\ (f\ (f\ (y\ f))))\\
+     && ... 
 \end{eqnarray*}$$
 
 And, as we know from the $$f(x)=\frac{a}{x}$$ example, fixed point iteration doesn't always converge on a fixed point.
