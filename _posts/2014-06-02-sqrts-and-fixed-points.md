@@ -96,8 +96,10 @@ It appears that this expansion will continue forever and never terminate. But we
 ~~~ javascript
 function step (callback) {
     return function (originalValue, approxSqrt) {
+        // Babylonian method formula to improve our approximation of the square root of originalValue.
         var improvedApproxSqrt = (approxSqrt + (originalValue / approxSqrt)) / 2;
 
+        // How far off the mark we are.
         var discrepancy = Math.abs(originalValue - (improvedApproxSqrt * improvedApproxSqrt));
 
         // Termination condition
