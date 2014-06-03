@@ -19,9 +19,9 @@ One interesting fact which might be of use is that $$\sqrt{a}$$ is a fixed point
 
 $$ \begin{eqnarray*}
 f(\sqrt{a}) &=& \frac{a}{\sqrt{a}}\\
-            &=& a^1a^{-\nicefrac{1}{2}}\\
-            &=& a^(1-\nicefrac{1}{2})\\
-            &=& a^(\nicefrac{1}{2})\\
+            &=& a^1a^{-\frac{1}{2}}\\
+            &=& a^(1-\frac{1}{2})\\
+            &=& a^(\frac{1}{2})\\
             &=& \sqrt{a} 
 \end{eqnarray*} $$
 
