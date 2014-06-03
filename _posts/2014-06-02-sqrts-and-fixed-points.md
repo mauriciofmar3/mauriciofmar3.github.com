@@ -71,11 +71,11 @@ This is called the Babylonian method, or Heron's method, and it was actually dis
 
 Remember that before we said $$\sqrt{a}$$ is a fixed point of the function $$f(x)=\frac{a}{x_n}$$. Unfortunately if you iterate that function, you will not approach $$\sqrt{a}$$. Fixed point iteration doesn't always work and this is one such case. The math behind being able to tell whether an arbitrary function will converge to a fixed point under fixed point iteration is [complicated](https://en.wikipedia.org/wiki/Fixed-point_theorem). 
 
-Now it would be very simple to wrap the Babylonian method in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is the *Y combinator*. You've probably heard of it due to the eponymous startup incubator founded by Lisp greybeard Paul Graham.
+Now it would be very simple to wrap the Babylonian method in a loop and perform a couple steps of fixed point iteration to get a decent sqrt(a). But since we're finding a fixed point, this seems like a nice time to break out something called a *fixed point combinator*. The best-known fixed point combinator is the *Y combinator*. You've probably heard of it due to [the eponymous startup incubator](https://en.wikipedia.org/wiki/Y_Combinator_(company)) founded by Lisp greybeard [Paul Graham](http://paulgraham.com/articles.html).
 
 ![YCombinator logo](http://ycombinator.com/images/yc500.gif)
 
-This is the definition of the Y combinator:
+This is the [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus) definition of the Y combinator, due to Haskell Curry:
 
 $$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
