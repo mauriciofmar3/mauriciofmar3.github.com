@@ -114,7 +114,9 @@ function step (callback) {
 }
 ~~~
 
-Now we need to implement the Y combinator in JavaScript. How would it look? Here's the Y combinator in lambda calculus again:
+This looks a lot like recursion, except that we've never referred to an free variable name. This is called [anonymous recursion](https://en.wikipedia.org/wiki/Anonymous_recursion), and it's useful in systems (notably lambda calculus) where functions cannot refer to themselves by name.
+
+Now we need the magic which will repeatedly invoke `step` and feed its output back into its input: the Y combinator. How would it look in JavaScript? Here's the Y combinator in lambda calculus again:
 
 $$ \lambda f.\!(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) $$
 
@@ -164,7 +166,6 @@ Now we can see it working:
 
 ~~~
 > var sqrt = Z(step);
-undefined
 > sqrt(2, 1); // sqrt of 2, with a starting estimate of 1
 1.4142156862745097
 ~~~
@@ -173,7 +174,6 @@ It's rather awkward to always have to provide a starting estimate, so we can add
 
 ~~~
 > function sqrt (num) { return Z(step)(num, 1); }
-undefined
 > sqrt(2)
 1.4142156862745097
 ~~~
