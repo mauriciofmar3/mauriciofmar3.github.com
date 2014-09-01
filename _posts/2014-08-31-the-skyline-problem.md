@@ -52,7 +52,7 @@ Now we have a working $$\mathcal{O}(n^{2}))$$ solution to exactly the problem we
 for each rectangle r:
     for each critical point c below r (except the one at r.right):
         c.y gets the max of r.height and the previous value of c.y
-~~
+~~~
 
 <script type="text/javascript" charset="utf-8" src="js/skyline7_edgePreload.js"></script>
 <div id="skyline-Stage7" class="EDGE-skyline7"></div>
