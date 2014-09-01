@@ -52,8 +52,8 @@ if(document.addEventListener ){
    aLoader = [
       { load: "edge_includes/jquery-2.0.3.min.js"},
       { load: "edge_includes/edge.4.0.1.min.js"},
-      { load: "skyline3_edge.js"},
-      { load: "skyline3_edgeActions.js"}];
+      { load: "js/skyline3_edge.js"},
+      { load: "js/skyline3_edgeActions.js"}];
 
 if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResources=doLoadResources; AdobeEdge.playWhenReady=playWhenReady; }
 
