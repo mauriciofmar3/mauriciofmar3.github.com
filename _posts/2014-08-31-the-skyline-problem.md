@@ -9,7 +9,7 @@ You are given a set of $$n$$ rectangles in no particular order. They have varyin
 It should be obvious that the left, right, and bottom edges of the skyline polygon are straight line segments and trivial to find. Therefore, we'll focus on the meat of the problem: how to find the jagged upper part of the skyline. 
 
 <script type="text/javascript" charset="utf-8" src="js/skyline1_edgePreload.js"></script>
-<div id="Stage" class="EDGE-skyline1"></div>
+<div id="Stage" class="EDGE-540608186"></div>
 
 How shall we proceed? If you're drawing a blank, it's always good to get a really awful solution on the table right away so that you have something to think about and improve upon. 
 
