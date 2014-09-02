@@ -1,0 +1,4 @@
+This directory is a hack because I can't get Adobe Edge Animate to 
+use an absolute path for the images folder. When you visit the skyline 
+post at https://briangordon.github.io/2014/08/the-skyline-problem.html 
+it looks for images in https://briangordon.github.io/2014/08/images
