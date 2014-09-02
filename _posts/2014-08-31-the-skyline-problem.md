@@ -15,12 +15,12 @@ The first thing I thought of was to construct a 1-dimensional [heightmap](https:
 
 ~~~
 for each rectangle r:
-    for each heightmap cell c starting at the r.left and ending at r.right:
+    for each heightmap cell c starting at r.left and ending at r.right:
         c gets the max of r.height and the previous value of c
 ~~~
 
 <script type="text/javascript" charset="utf-8" src="/js/skyline2_edgePreload.js"></script>
-<div style="width:703px">
+<div style="width:703px; text-align:center">
 <div id="skyline-Stage2" class="EDGE-skyline2"></div>
 </div>
 
