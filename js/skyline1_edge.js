@@ -338,4 +338,4 @@ Edge.registerCompositionDefn(compId, symbols, fonts, resources, opts);
 $(window).ready(function() {
      Edge.launchComposition(compId);
 });
-})(jQuery, AdobeEdge, "EDGE-540608186");
+})(jQuery, AdobeEdge, "EDGE-skyline1");
