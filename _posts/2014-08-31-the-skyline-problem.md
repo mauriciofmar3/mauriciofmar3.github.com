@@ -20,7 +20,7 @@ for each rectangle r:
 ~~~
 
 <script type="text/javascript" charset="utf-8" src="/js/skyline2_edgePreload.js"></script>
-<div style="width:703px">
+<div style="width:704px">
 <div id="skyline-Stage2" class="EDGE-skyline2"></div>
 </div>
 
