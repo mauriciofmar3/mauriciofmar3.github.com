@@ -8,7 +8,7 @@ You are given a set of $$n$$ rectangles in no particular order. They have varyin
 
 It should be obvious that the left, right, and bottom edges of the skyline polygon are straight line segments and trivial to find. Therefore, we'll focus on the meat of the problem: how to find the jagged upper part of the skyline. 
 
-<script type="text/javascript" charset="utf-8" src="js/skyline1_edgePreload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/skyline1_edgePreload.js"></script>
 <div id="skyline-Stage1" class="EDGE-skyline1"></div>
 
 How shall we proceed? If you're drawing a blank, it's always good to get a really awful solution on the table right away so that you have something to think about and improve upon. 
@@ -21,7 +21,7 @@ for each rectangle r:
         c gets the max of r.height and the previous value of c
 ~~~
 
-<script type="text/javascript" charset="utf-8" src="js/skyline2_edgePreload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/skyline2_edgePreload.js"></script>
 <div id="skyline-Stage2" class="EDGE-skyline2"></div>
 
 OK, so this works as a first attempt at a solution. What, specifically, is wrong with it? 
@@ -43,7 +43,7 @@ for each rectangle r:
             c.y gets the max of r.height and the previous value of c.y
 ~~~
 
-<script type="text/javascript" charset="utf-8" src="js/skyline6_edgePreload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/skyline6_edgePreload.js"></script>
 <div id="skyline-Stage6" class="EDGE-skyline6"></div>
 
 Looks good! So now we have a working $$\mathcal{O}(n^{2})$$ solution to exactly the problem we were trying to solve, with no error. Can we achieve a better running time? It occurs to us that we don't really need to look at *every* critical point when printing a rectangle, but rather only those critical points below the rectangle in question.
@@ -54,12 +54,12 @@ for each rectangle r:
         c.y gets the max of r.height and the previous value of c.y
 ~~~
 
-<script type="text/javascript" charset="utf-8" src="js/skyline7_edgePreload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/skyline7_edgePreload.js"></script>
 <div id="skyline-Stage7" class="EDGE-skyline7"></div>
 
 This optimization depends, of course, on being able to efficiently find which critical points are subtended by each rectangle. This is easily done by sorting the critical points. For example, if we want to find the critical points subtended by the magenta rectangle, we start at the left side of the magenta rectangle and scan to the right, accumulating critical points until we reach the right side.
 
-<script type="text/javascript" charset="utf-8" src="js/skyline5_edgePreload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/skyline5_edgePreload.js"></script>
 <div id="skyline-Stage5" class="EDGE-skyline5"></div>
 
 Unfortunately, this isn't an asymptotic improvement in the worst case. It's still $$\mathcal{O}(n^{2})$$ given something like the following configuration:
@@ -75,7 +75,7 @@ for each critical point c:
             c.y gets the max of r.height and the previous value of c.y
 ~~~
 
-<script type="text/javascript" charset="utf-8" src="js/skyline3_edgePreload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/skyline3_edgePreload.js"></script>
 <div id="skyline-Stage3" class="EDGE-skyline3"></div>
 
 Again, we don't really need to consider all rectangles, only the ones above the critical point in question:
@@ -86,7 +86,7 @@ for each critical point c:
         c.y gets the max of r.height and the previous value of c.y
 ~~~
 
-<script type="text/javascript" charset="utf-8" src="js/skyline4_edgePreload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/skyline4_edgePreload.js"></script>
 <div id="skyline-Stage4" class="EDGE-skyline4"></div>
 
 So, given a critical point, how do we efficiently find all of the rectangles above it? This requires a different strategy than before. Before we turned the problem inside out, we needed to find all of the critical points between the left and right sides of the given rectangle. Now, we need to find all of the rectangles with a left edge to the left of the given critical point and a right edge to the right of the given critical point.
@@ -95,7 +95,7 @@ What if we begin at the critical point and go left looking for left edges, and a
 
 A better approach is to simply scan across the skyline's sorted critical points from left to right, keeping track of an *active set* of rectangles as you go. When you reach a critical point, the active set is updated and then the critical point gets assigned a copy of the current active set of rectangles. By the end of the pass, each critical point will know about all of the rectangles above it.
 
-<script type="text/javascript" charset="utf-8" src="js/skyline8_edgePreload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/skyline8_edgePreload.js"></script>
 <div id="skyline-Stage8" class="EDGE-skyline8"></div>
 
 Now that we're able to scan through the critical points and consider only the "active" set of rectangles at each critical point, an interesting opportunity presents itself. Our current solution can be written as:
