@@ -20,7 +20,9 @@ for each rectangle r:
 ~~~
 
 <script type="text/javascript" charset="utf-8" src="/js/skyline2_edgePreload.js"></script>
+<div style="width:703px">
 <div id="skyline-Stage2" class="EDGE-skyline2"></div>
+</div>
 
 OK, so this works as a first attempt at a solution. What, specifically, is wrong with it? 
 
