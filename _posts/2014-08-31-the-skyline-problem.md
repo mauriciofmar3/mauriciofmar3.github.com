@@ -6,8 +6,6 @@ tags: programming
 
 You are given a set of $$n$$ rectangles in no particular order. They have varying widths and heights, but their bottom edges are collinear, so that they look like buildings on a skyline. For each rectangle, you're given the x position of the left edge, the x position of the right edge, and the height. Your task is to draw an outline around the set of rectangles so that you can see what the skyline would look like when silhouetted at night.
 
-It should be obvious that the left, right, and bottom edges of the skyline polygon are straight line segments and trivial to find. Therefore, we'll focus on the meat of the problem: how to find the jagged upper part of the skyline. 
-
 <script type="text/javascript" charset="utf-8" src="/js/skyline1_edgePreload.js"></script>
 <div id="skyline-Stage1" class="EDGE-skyline1"></div>
 
@@ -105,6 +103,6 @@ for each critical point c
     c.y gets the height of the tallest rectangle over c
 ~~~
 
-This is no longer obviously $$\mathcal{O}(n^{2})$$. If we can somehow calculate the height of the tallest rectangle over c in faster than $$\mathcal{O}(n)$$ time, we have beaten our $$\mathcal{O}(n^{2})$$ algorithm. Fortunately, we know about a data structure which can keep track of an active set of integer-keyed objects and return the highest one in $$\mathcal{O}(\log{}n)$$ time: the heap.
+This is no longer obviously $$\mathcal{O}(n^{2})$$. If we can somehow calculate the height of the tallest rectangle over c in faster than $$\mathcal{O}(n)$$ time, we have beaten our $$\mathcal{O}(n^{2})$$ algorithm. Fortunately, we know about a data structure which can keep track of an active set of integer-keyed objects and return the highest one in $$\mathcal{O}(\log{}n)$$ time: a heap.
 
-Our final solution, then, in $$\mathcal{O}(n\log{}n)$$ time, is as follows. First, sort the critical points. Then scan across the critical points from left to right. When we encounter the left edge of a rectangle, we add that rectangle to the heap with its height as the key. When we encounter the right edge of a rectangle, we remove that rectangle from the heap. And any time we encounter a critical point, we set the height of that critical point to the value peeked from the top of the heap.
+Our final solution, then, in $$\mathcal{O}(n\log{}n)$$ time, is as follows. First, sort the critical points. Then scan across the critical points from left to right. When we encounter the left edge of a rectangle, we add that rectangle to the heap with its height as the key. When we encounter the right edge of a rectangle, we search for and remove that rectangle from the heap. (This requires keeping external pointers into the heap.) Finally, any time we encounter a critical point, after updating the heap we set the height of that critical point to the value peeked from the top of the heap.
