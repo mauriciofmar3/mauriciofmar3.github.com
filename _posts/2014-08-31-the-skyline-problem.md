@@ -46,7 +46,7 @@ for each rectangle r:
 <script type="text/javascript" charset="utf-8" src="js/skyline6_edgePreload.js"></script>
 <div id="skyline-Stage6" class="EDGE-skyline6"></div>
 
-Now we have a working $$\mathcal{O}(n^{2})$$ solution to exactly the problem we were trying to solve, with no error. Can we achieve a better running time than this? It occurs to us that we don't really need to look at *every* critical point when printing a rectangle, but rather only those critical points below the rectangle in question.
+Looks good! So now we have a working $$\mathcal{O}(n^{2})$$ solution to exactly the problem we were trying to solve, with no error. Can we achieve a better running time? It occurs to us that we don't really need to look at *every* critical point when printing a rectangle, but rather only those critical points below the rectangle in question.
 
 ~~~
 for each rectangle r:
