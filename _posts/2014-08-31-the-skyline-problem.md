@@ -46,7 +46,7 @@ for each rectangle r:
 <script type="text/javascript" charset="utf-8" src="js/skyline6_edgePreload.js"></script>
 <div id="skyline-Stage6" class="EDGE-skyline6"></div>
 
-Now we have a working $$\mathcal{O}(n^{2}))$$ solution to exactly the problem we were trying to solve, with no error. Can we achieve a better running time than this? It occurs to us that we don't really need to look at *every* critical point when printing a rectangle, but rather only those critical points below the rectangle in question.
+Now we have a working $$\mathcal{O}(n^{2})$$ solution to exactly the problem we were trying to solve, with no error. Can we achieve a better running time than this? It occurs to us that we don't really need to look at *every* critical point when printing a rectangle, but rather only those critical points below the rectangle in question.
 
 ~~~
 for each rectangle r:
@@ -62,7 +62,7 @@ This optimization depends, of course, on being able to efficiently find which cr
 <script type="text/javascript" charset="utf-8" src="js/skyline5_edgePreload.js"></script>
 <div id="skyline-Stage5" class="EDGE-skyline5"></div>
 
-Unfortunately, this isn't an asymptotic improvement in the worst case. It's still $$\mathcal{O}(n^{2}))$$ given something like the following configuration:
+Unfortunately, this isn't an asymptotic improvement in the worst case. It's still $$\mathcal{O}(n^{2})$$ given something like the following configuration:
 
 ![The worst case.](/images/worstcase.svg)
 
@@ -91,7 +91,7 @@ for each critical point c:
 
 So, given a critical point, how do we efficiently find all of the rectangles above it? This requires a different strategy than before. Before we turned the problem inside out, we needed to find all of the critical points between the left and right sides of the given rectangle. Now, we need to find all of the rectangles with a left edge to the left of the given critical point and a right edge to the right of the given critical point.
 
-What if we begin at the critical point and go left looking for left edges, and also go right looking for right edges, and then intersect the two sets of rectangles? That would work, but, again, it's $$\mathcal{O}(n^{2}))$$ in total to do this for every critical point. 
+What if we begin at the critical point and go left looking for left edges, and also go right looking for right edges, and then intersect the two sets of rectangles? That would work, but, again, it's $$\mathcal{O}(n^{2})$$ in total to do this for every critical point. 
 
 A better approach is to simply scan across the skyline's sorted critical points from left to right, keeping track of an *active set* of rectangles as you go. When you reach a critical point, the active set is updated and then the critical point gets assigned a copy of the current active set of rectangles. By the end of the pass, each critical point will know about all of the rectangles above it.
 
@@ -105,6 +105,6 @@ for each critical point c
     c.y gets the height of the tallest rectangle over c
 ~~~
 
-This is no longer obviously $$\mathcal{O}(n^{2}))$$. If we can somehow calculate the height of the tallest rectangle over c in faster than $$\mathcal{O}(n))$$ time, we have beaten our $$\mathcal{O}(n^{2}))$$ algorithm. Fortunately, we know about a data structure which can keep track of an active set of integer-keyed objects and return the highest one in $$\mathcal{O}(\log{}n)$$ time: the heap.
+This is no longer obviously $$\mathcal{O}(n^{2})$$. If we can somehow calculate the height of the tallest rectangle over c in faster than $$\mathcal{O}(n)$$ time, we have beaten our $$\mathcal{O}(n^{2})$$ algorithm. Fortunately, we know about a data structure which can keep track of an active set of integer-keyed objects and return the highest one in $$\mathcal{O}(\log{}n)$$ time: the heap.
 
 Our final solution, then, in $$\mathcal{O}(n\log{}n)$$ time, is as follows. First, sort the critical points. Then scan across the critical points from left to right. When we encounter the left edge of a rectangle, we add that rectangle to the heap with its height as the key. When we encounter the right edge of a rectangle, we remove that rectangle from the heap. And any time we encounter a critical point, we set the height of that critical point to the value peeked from the top of the heap.
