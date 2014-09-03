@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
+   height="1200"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="New document 1">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.80333333"
+     inkscape:cx="250"
+     inkscape:cy="747.80009"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-global="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1393"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,147.63782)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2993"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(1.2448133,-119.42205)"><flowRegion
+         id="flowRegion2995"><rect
+           id="rect2997"
+           width="476"
+           height="245"
+           x="9"
+           y="10" /></flowRegion><flowPara
+         id="flowPara2999">Can you use a range tree to store your intervals, or do you need to use an interval tree?</flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="263.24481"
+       y="76.57795"
+       id="text3001"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3003"
+         x="263.24481"
+         y="76.57795">a handy guide</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3005"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(31.244813,-165.42205)"><flowRegion
+         id="flowRegion3007"><rect
+           id="rect3009"
+           width="425"
+           height="229"
+           x="24"
+           y="263"
+           style="font-size:28px" /></flowRegion><flowPara
+         id="flowPara3011">Answer: it depends on what kind of queries you want to do.</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3785"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(1.2448133,-119.42205)"><flowRegion
+         id="flowRegion3787"><rect
+           id="rect3789"
+           width="457"
+           height="65.5"
+           x="26.5"
+           y="385"
+           style="font-size:28px" /></flowRegion><flowPara
+         id="flowPara3791">This  is your data: a single interval.</flowPara></flowRoot>    <g
+       id="g3818"
+       transform="translate(1.2448133,-171.78423)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3013"
+         d="m 37,418.36218 414,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="409.86218"
+         x="147.5"
+         height="17"
+         width="185.5"
+         id="rect3015"
+         style="fill:#0000ff;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793"
+         y="435.86218"
+         x="144"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="435.86218"
+           x="144"
+           id="tspan3795"
+           sodipodi:role="line">a</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-1"
+         y="436.49207"
+         x="329.65137"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="436.49207"
+           x="329.65137"
+           id="tspan3795-7"
+           sodipodi:role="line">b</tspan></text>
+    </g>
+    <g
+       transform="translate(-4.2551867,-35.181212)"
+       id="g3818-4">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3013-0"
+         d="m 37,418.36218 414,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="409.86218"
+         x="147.5"
+         height="17"
+         width="185.5"
+         id="rect3015-9"
+         style="fill:#0000ff;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-4"
+         y="435.86218"
+         x="144"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="435.86218"
+           x="144"
+           id="tspan3795-8"
+           sodipodi:role="line">a</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-1-8"
+         y="436.49207"
+         x="329.65137"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="436.49207"
+           x="329.65137"
+           id="tspan3795-7-2"
+           sodipodi:role="line">b</tspan></text>
+    </g>
+    <rect
+       style="fill:#00ff00;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3868"
+       width="127"
+       height="17.5"
+       x="67.244812"
+       y="374.07794" />
+    <flowRoot
+       transform="translate(-0.00616672,20.257088)"
+       xml:space="preserve"
+       id="flowRoot3785-4"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3787-5"><rect
+           id="rect3789-5"
+           width="457"
+           height="168"
+           x="26.5"
+           y="385"
+           style="font-size:28px" /></flowRegion><flowPara
+         id="flowPara3791-1">This query window would work fine with a range tree. The range tree would return a so you know that [a,b] intersects your query window.</flowPara></flowRoot>    <g
+       transform="translate(-5.8186567,174.5849)"
+       id="g3818-4-7">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3013-0-1"
+         d="m 37,418.36218 414,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="409.86218"
+         x="147.5"
+         height="17"
+         width="185.5"
+         id="rect3015-9-1"
+         style="fill:#0000ff;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-4-5"
+         y="435.86218"
+         x="144"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="435.86218"
+           x="144"
+           id="tspan3795-8-2"
+           sodipodi:role="line">a</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-1-8-7"
+         y="436.49207"
+         x="329.65137"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="436.49207"
+           x="329.65137"
+           id="tspan3795-7-2-6"
+           sodipodi:role="line">b</tspan></text>
+    </g>
+    <rect
+       style="fill:#00ff00;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3868-1"
+       width="127"
+       height="17.5"
+       x="259.68134"
+       y="583.84406" />
+    <flowRoot
+       transform="translate(107.32155,234.43306)"
+       xml:space="preserve"
+       id="flowRoot3785-4-4"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3787-5-2"><rect
+           id="rect3789-5-3"
+           width="457"
+           height="168"
+           x="26.5"
+           y="385"
+           style="font-size:28px" /></flowRegion><flowPara
+         id="flowPara3791-1-2">Same story here.</flowPara></flowRoot>    <g
+       transform="translate(-4.5045667,284.25717)"
+       id="g3818-4-2">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3013-0-16"
+         d="m 37,418.36218 414,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="409.86218"
+         x="147.5"
+         height="17"
+         width="185.5"
+         id="rect3015-9-8"
+         style="fill:#0000ff;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-4-57"
+         y="435.86218"
+         x="144"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="435.86218"
+           x="144"
+           id="tspan3795-8-6"
+           sodipodi:role="line">a</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-1-8-1"
+         y="436.49207"
+         x="329.65137"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="436.49207"
+           x="329.65137"
+           id="tspan3795-7-2-8"
+           sodipodi:role="line">b</tspan></text>
+    </g>
+    <rect
+       style="fill:#00ff00;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3868-9"
+       width="311.23236"
+       height="17.5"
+       x="66.995422"
+       y="693.51636" />
+    <flowRoot
+       transform="translate(-0.25554672,339.69547)"
+       xml:space="preserve"
+       id="flowRoot3785-4-2"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3787-5-7"><rect
+           id="rect3789-5-9"
+           width="457"
+           height="168"
+           x="26.5"
+           y="385"
+           style="font-size:28px" /></flowRegion><flowPara
+         id="flowPara3791-1-5">In this case, *both* of the interval endpoints are returned by the range tree. Obviously [a,b] intersects your query window.</flowPara></flowRoot>    <g
+       transform="translate(-5.7493868,469.71775)"
+       id="g3818-4-4">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3013-0-3"
+         d="m 37,418.36218 414,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="409.86218"
+         x="147.5"
+         height="17"
+         width="185.5"
+         id="rect3015-9-12"
+         style="fill:#0000ff;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-4-3"
+         y="435.86218"
+         x="144"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="435.86218"
+           x="144"
+           id="tspan3795-8-3"
+           sodipodi:role="line">a</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3793-1-8-4"
+         y="436.49207"
+         x="329.65137"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="436.49207"
+           x="329.65137"
+           id="tspan3795-7-2-1"
+           sodipodi:role="line">b</tspan></text>
+    </g>
+    <rect
+       style="fill:#00ff00;fill-opacity:0.43137255;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3868-13"
+       width="127"
+       height="17.5"
+       x="167.75061"
+       y="878.97693" />
+    <flowRoot
+       transform="translate(-1.5003668,525.15605)"
+       xml:space="preserve"
+       id="flowRoot3785-4-8"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion3787-5-74"><rect
+           id="rect3789-5-2"
+           width="457"
+           height="168"
+           x="26.5"
+           y="385"
+           style="font-size:28px" /></flowRegion><flowPara
+         id="flowPara3791-1-7">The range tree will return nothing because there are no points in the query window. This is the only case where interval trees are necessary!</flowPara></flowRoot>  </g>
+</svg>
