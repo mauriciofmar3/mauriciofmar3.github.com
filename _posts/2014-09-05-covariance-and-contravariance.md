@@ -4,8 +4,6 @@ title: Covariance and contravariance rules in Java
 tags: programming
 ---
 
-This post serves as a reference for what type variance is allowed by the [Java Language Specification](http://docs.oracle.com/javase/specs/jls/se8/html/index.html).
-
 Assignment
 ----------
 
@@ -20,7 +18,7 @@ public class SubClazz extends Clazz { }
 Clazz instance = new SubClazz();
 ~~~
 
-Assignment can also occur implicitly when returning a value from a method or when passing a value as an argument.
+Assignment will also occur implicitly when returning from a method or when passing arguments.
 
 ~~~ java
 public Clazz makeClazz() {
@@ -32,6 +30,13 @@ public Clazz takeClazz(Clazz foo) { }
 
 ~~~ java
 takeClazz(new SubClazz()); // OK
+~~~
+
+The same rule is used for determining whether a cast is valid.
+
+~~~ java
+(Clazz)new SubClazz(); // OK
+(SubClazz)new Clazz(); // Error
 ~~~
 
 Arrays
@@ -50,7 +55,7 @@ They are also **covariant** in the type of the array itself. You can directly as
 Clazz[] array = new SubClazz[10];
 ~~~
 
-This is dangerous. You may think that you have a `Clazz[]` but you really still have a `SubClazz[]`. The following code compiles fine but throws a `java.lang.ArrayStoreException` at runtime:
+This is dangerous. Although the type of the `array` variable is `Clazz[]`, the actual array object on the heap is a `SubClazz[]`. For that reason, the following code compiles fine but throws a `java.lang.ArrayStoreException` at runtime:
 
 ~~~ java
 Clazz[] array = new SubClazz[10];
@@ -72,4 +77,7 @@ public interface Child extends Parent {
     public SubClazz act(Clazz parameter);
 }
 ~~~
+
+Generics
+--------
 
