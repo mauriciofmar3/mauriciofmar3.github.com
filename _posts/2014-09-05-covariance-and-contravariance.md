@@ -36,6 +36,13 @@ They are also **covariant** in the type of the array itself. You can directly as
 Clazz[] array = new SubClazz[10];
 ~~~
 
+This is dangerous. You may think that you have a `Clazz[]` but you really still have a `SubClazz[]`. The following code compiles fine but throws a `java.lang.ArrayStoreException` at runtime:
+
+~~~ java
+Clazz[] array = new SubClazz[10];
+array[0] = new Clazz();
+~~~
+
 Overriding methods
 ------------------
 
