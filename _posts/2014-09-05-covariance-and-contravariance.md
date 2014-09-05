@@ -12,8 +12,8 @@ Assignment
 Assignment in Java is **covariant**. That means that if `SubClazz` is a subtype of `Clazz` then a `Clazz` type can be assigned a `SubClazz` type.
 
 ~~~ java
-class Clazz { }
-class SubClazz extends Clazz { }
+public class Clazz { }
+public class SubClazz extends Clazz { }
 ~~~
 
 ~~~ java
@@ -42,11 +42,11 @@ Overriding methods
 The overriding method is **covariant** in the return type and **invariant** in the parameter types. That means that the return type of the overriding method can be a subclass of the return type of the overridden method, but the parameter types must match exactly.
 
 ~~~ java
-interface Parent {
+public interface Parent {
     public Clazz act(Clazz parameter);
 }
 
-interface Child extends Parent {
+public interface Child extends Parent {
     @Override
     public SubClazz act(Clazz parameter);
 }
