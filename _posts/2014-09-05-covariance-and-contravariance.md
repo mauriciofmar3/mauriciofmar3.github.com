@@ -9,7 +9,7 @@ This post serves as a reference for what type variance is allowed by the [Java L
 Assignment
 ----------
 
-Assignment in Java is **covariant**. That means that if `SubClazz` is a subtype of `Clazz` then a `Clazz` type can be assigned a `SubClazz` type.
+Assignment in Java is **covariant**. That means that if `SubClazz` is a subtype of `Clazz` then a `SubClazz` reference can be assigned to a `Clazz` variable.
 
 ~~~ java
 public class Clazz { }
@@ -18,6 +18,20 @@ public class SubClazz extends Clazz { }
 
 ~~~ java
 Clazz instance = new SubClazz();
+~~~
+
+Assignment can also occur implicitly when returning a value from a method or when passing a value as an argument.
+
+~~~ java
+public Clazz makeClazz() {
+    return new SubClazz(); // OK
+}
+
+public Clazz takeClazz(Clazz foo) { }
+~~~
+
+~~~ java
+takeClazz(new SubClazz()); // OK
 ~~~
 
 Arrays
@@ -46,7 +60,7 @@ array[0] = new Clazz();
 Overriding methods
 ------------------
 
-The overriding method is **covariant** in the return type and **invariant** in the parameter types. That means that the return type of the overriding method can be a subclass of the return type of the overridden method, but the parameter types must match exactly.
+The overriding method is **covariant** in the return type and **invariant** in the argument types. That means that the return type of the overriding method can be a subclass of the return type of the overridden method, but the argument types must match exactly.
 
 ~~~ java
 public interface Parent {
