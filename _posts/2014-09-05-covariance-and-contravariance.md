@@ -119,7 +119,7 @@ public interface Parent {
 
 public interface Child extends Parent {
     @Override
-    public List<String> echo(); // OK
+    public List<String> echo();
 }
 ~~~
 
@@ -130,7 +130,7 @@ public interface Parent {
 
 public interface Child extends Parent {
     @Override
-    public List echo(); // OK
+    public List echo();
 }
 ~~~
 
@@ -156,6 +156,6 @@ public interface Parent {
 
 public interface Child extends Parent {
     @Override
-    public void act(List a); // OK
+    public void act(List a);
 }
 ~~~
