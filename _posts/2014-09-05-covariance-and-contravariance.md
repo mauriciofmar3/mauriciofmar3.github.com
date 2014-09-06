@@ -4,7 +4,7 @@ title: Covariance and contravariance rules in Java
 tags: programming
 ---
 
-I hope to make this post a go-to quick reference for how exactly variance works in Java. Lots of programming languages do this in different ways, so it can be tricky to switch between environments and keep the variance rules straight. 
+This post is a go-to quick reference for exactly how covariance and contravariance work in Java. Lots of programming languages do this in different ways, so it can be tricky to switch between languages and keep the rules straight. When you switch over to Java, use this guide to refresh your memory.
 
 Assignment
 ----------
