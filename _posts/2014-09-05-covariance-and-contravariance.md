@@ -4,6 +4,8 @@ title: Covariance and contravariance rules in Java
 tags: programming
 ---
 
+I hope to make this post a go-to quick reference for how exactly variance works in Java. Lots of programming languages do this in different ways, so it can be tricky to switch between environments and keep the variance rules straight. 
+
 Assignment
 ----------
 
@@ -69,15 +71,91 @@ The overriding method is **covariant** in the return type and **invariant** in t
 
 ~~~ java
 public interface Parent {
-    public Clazz act(Clazz parameter);
+    public Clazz act(Clazz argument);
 }
 
 public interface Child extends Parent {
     @Override
-    public SubClazz act(Clazz parameter);
+    public SubClazz act(Clazz argument);
 }
 ~~~
+
+If the parameter types aren't identical in the subclass then the method will be *overloaded* instead of overridden. You should always use the `@Override` annotation to ensure that this doesn't happen accidentally.
 
 Generics
 --------
 
+Unless wildcards are involved, generic types are **invariant** with respect to the parameterized type. So you can't do covariant ArrayLists like this:
+
+~~~ java
+ArrayList<Clazz> ary = new ArrayList<SubClazz>(); // Error!
+~~~
+
+The normal rules apply to the type being parameterized:
+
+~~~ java
+List<Clazz> list = new ArrayList<Clazz>();
+~~~
+
+Unbounded wildcards allow assignment with any type parameter: 
+
+~~~ java
+List<?> list = new ArrayList<Clazz>();
+~~~
+
+Bounded wildcards affect assignment like you might expect:
+
+~~~ java
+List<? extends Clazz> list = new ArrayList<SubClazz>();
+List<? super Clazz> list2 = new ArrayList<Object>();
+~~~
+
+You can add or remove the type parameters from the return type of a method and it will still override:
+
+~~~ java
+public interface Parent {
+    public List echo();
+}
+
+public interface Child extends Parent {
+    @Override
+    public List<String> echo(); // OK
+}
+~~~
+
+~~~ java
+public interface Parent {
+    public List<String> echo();
+}
+
+public interface Child extends Parent {
+    @Override
+    public List echo(); // OK
+}
+~~~
+
+Wildcards can be present in the types of method arguments. If you want to override a method with a wildcard-typed argument, the overriding method must have an identical type parameter. You cannot be "more specific" with the overriding method, no matter how much sense that makes:
+
+~~~ java
+public interface Parent {
+    public void act(List<? extends List> a);
+}
+
+public interface Child extends Parent {
+    @Override
+    public void act(List<? extends ArrayList> a); // Error!
+}
+~~~
+
+Also, you can replace any type-parameterized method argument with a non-type-parameterized method argument in the subclass and it will still be considered an override:
+
+~~~ java
+public interface Parent {
+    public void act(List<? extends Number> a);
+}
+
+public interface Child extends Parent {
+    @Override
+    public void act(List a); // OK
+}
+~~~
