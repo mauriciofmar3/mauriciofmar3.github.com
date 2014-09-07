@@ -24,14 +24,14 @@ Assignment will also occur implicitly when returning from a method or when passi
 
 ~~~ java
 public Clazz makeClazz() {
-    return new SubClazz(); // OK
+    return new SubClazz();
 }
 
 public Clazz takeClazz(Clazz foo) { }
 ~~~
 
 ~~~ java
-takeClazz(new SubClazz()); // OK
+takeClazz(new SubClazz());
 ~~~
 
 The same rule is used for determining whether a cast is valid.
