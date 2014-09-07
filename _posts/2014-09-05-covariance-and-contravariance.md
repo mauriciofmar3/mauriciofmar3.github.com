@@ -80,7 +80,7 @@ public interface Child extends Parent {
 }
 ~~~
 
-If the parameter types aren't identical in the subclass then the method will be *overloaded* instead of overridden. You should always use the `@Override` annotation to ensure that this doesn't happen accidentally.
+If the argument types aren't identical in the subclass then the method will be *overloaded* instead of overridden. You should always use the `@Override` annotation to ensure that this doesn't happen accidentally.
 
 Generics
 --------
