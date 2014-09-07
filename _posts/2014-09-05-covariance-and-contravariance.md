@@ -51,13 +51,13 @@ Clazz[] array = new Clazz[10];
 array[0] = new SubClazz();
 ~~~
 
-They are also **covariant** in the type of the array itself. You can directly assign a `SubClazz[]` type to a `Clazz[]` type without a cast.
+They are also **covariant** in the type of the array itself. You can directly assign a `SubClazz[]` type to a `Clazz[]`.
 
 ~~~ java
 Clazz[] array = new SubClazz[10];
 ~~~
 
-This is dangerous. Although the type of the `array` variable is `Clazz[]`, the actual array object on the heap is a `SubClazz[]`. For that reason, the following code compiles fine but throws a `java.lang.ArrayStoreException` at runtime:
+Be careful though; the above line is dangerous. Although the type of the `array` variable is `Clazz[]`, the actual array object on the heap is a `SubClazz[]`. For that reason, the following code compiles fine but throws a `java.lang.ArrayStoreException` at runtime:
 
 ~~~ java
 Clazz[] array = new SubClazz[10];
