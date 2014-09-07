@@ -110,7 +110,7 @@ List<? extends Clazz> list = new ArrayList<SubClazz>();
 List<? super Clazz> list2 = new ArrayList<Object>();
 ~~~
 
-You can add or remove the type parameters from the return type of a method and it will still override:
+You can add or remove the type parameters from the return type of an overriding method and it will still compile:
 
 ~~~ java
 public interface Parent {
@@ -134,7 +134,7 @@ public interface Child extends Parent {
 }
 ~~~
 
-Wildcards can be present in the types of method arguments. If you want to override a method with a wildcard-typed argument, the overriding method must have an identical type parameter. You cannot be "more specific" with the overriding method, no matter how much sense that makes:
+Wildcards can be present in the types of method arguments. If you want to override a method with a wildcard-typed argument, the overriding method must have an identical type parameter. You cannot be "more specific" with the overriding method:
 
 ~~~ java
 public interface Parent {
