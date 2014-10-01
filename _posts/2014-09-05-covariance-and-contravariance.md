@@ -6,10 +6,10 @@ tags: programming
 
 This post is a go-to quick reference for exactly how covariance and contravariance work in Java. Different programming languages do this in different ways, so sometimes it can be tricky to switch between languages and keep the rules straight. When you switch over to Java, use this guide to refresh your memory.
 
-Assignment
-----------
+Casting
+-------
 
-Assignment in Java is **covariant**. That means that if `SubClazz` is a subtype of `Clazz` then a `SubClazz` reference can be assigned to a `Clazz` variable.
+Casting in Java is **covariant**. That means that if `SubClazz` is a subtype of `Clazz` then a `SubClazz` reference can be cast to a `Clazz`.
 
 ~~~ java
 public class Clazz { }
@@ -17,10 +17,17 @@ public class SubClazz extends Clazz { }
 ~~~
 
 ~~~ java
+(Clazz)new SubClazz(); // OK
+(SubClazz)new Clazz(); // Error
+~~~
+
+Casting can occur implictly during assignment:
+
+~~~ java
 Clazz instance = new SubClazz();
 ~~~
 
-Assignment will also occur implicitly when returning from a method or when passing arguments.
+Casting can also occur implicitly when returning from a method or when passing arguments.
 
 ~~~ java
 public Clazz makeClazz() {
@@ -32,13 +39,6 @@ public Clazz takeClazz(Clazz foo) { }
 
 ~~~ java
 takeClazz(new SubClazz());
-~~~
-
-The same rule is used for determining whether a cast is valid.
-
-~~~ java
-(Clazz)new SubClazz(); // OK
-(SubClazz)new Clazz(); // Error
 ~~~
 
 Arrays
