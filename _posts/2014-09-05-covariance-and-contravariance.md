@@ -124,19 +124,21 @@ subClazzList = clazzList;
 Type parameter bounds work the same way, [although they cannot be lower-bounded](http://www.angelikalanger.com/GenericsFAQ/FAQSections/TypeParameters.html#FAQ107). If you have multiple upper bounds on a type parameter, you can upcast to any of them, as expected:
 
 ~~~ java
-public class GenericsTest<T extends GenericsTest.A & GenericsTest.B> {
+interface A {}
+interface B {}
+interface C extends A, B {}
+~~~
+
+~~~ java
+public class Holder<T extends A & B> {
     T member;
-    
-    interface A {}
-    interface B {}
-    interface C extends A, B {}
 }
 ~~~
 
 ~~~ java
-A member1 = new GenericsTest<C>().member;
-B member2 = new GenericsTest<C>().member;
-C member3 = new GenericsTest<C>().member;
+A member1 = new Holder<C>().member;
+B member2 = new Holder<C>().member;
+C member3 = new Holder<C>().member;
 ~~~
 
 You can add or remove the type parameters from the return type of an overriding method and it will still compile:
