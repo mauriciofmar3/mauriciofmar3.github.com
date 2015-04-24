@@ -6,10 +6,10 @@ tags: programming
 
 This post is a go-to quick reference for exactly how covariance and contravariance work in Java. Different programming languages do this in different ways, so sometimes it can be tricky to switch between languages and keep the rules straight. When you switch over to Java, use this guide to refresh your memory.
 
-Casting
--------
+Type conversion
+---------------
 
-Casting in Java is **covariant**. That means that if `SubClazz` is a subtype of `Clazz` then a `SubClazz` reference can be cast to a `Clazz`.
+Type conversion in Java is **covariant**. That means that if `SubClazz` is a subtype of `Clazz` then a `SubClazz` reference can be cast to a `Clazz`. The other way doesn't work- obviously, right? [Don't tell that to the designers of Dart.](https://www.dartlang.org/articles/why-dart-types/#optimism-on-down-assignments)
 
 ~~~ java
 public class Clazz { }
@@ -21,13 +21,13 @@ public class SubClazz extends Clazz { }
 (SubClazz)new Clazz(); // Error
 ~~~
 
-Casting can occur implictly during assignment:
+Conversion can occur implictly during assignment:
 
 ~~~ java
 Clazz instance = new SubClazz();
 ~~~
 
-Casting can also occur implicitly when returning from a method or when passing arguments.
+Conversion can also occur implicitly when returning from a method or when passing arguments.
 
 ~~~ java
 public Clazz makeClazz() {
@@ -85,7 +85,7 @@ If the argument types aren't identical in the subclass then the method will be *
 Generics
 --------
 
-Unless wildcards are involved, generic types are **invariant** with respect to the parameterized type. So you can't do covariant ArrayLists like this:
+Unless bounds are involved, generic types are **invariant** with respect to the parameterized type. So you can't do covariant ArrayLists like this:
 
 ~~~ java
 ArrayList<Clazz> ary = new ArrayList<SubClazz>(); // Error!
@@ -108,6 +108,31 @@ Bounded wildcards affect assignment like you might expect:
 ~~~ java
 List<? extends Clazz> list = new ArrayList<SubClazz>();
 List<? super Clazz> list2 = new ArrayList<Object>();
+~~~
+
+Java is smart enough that *more* restrictive type bounds are commensurable with *less* restrictive type bounds when appropriate:
+
+~~~ java
+List<? super Clazz> clazzList;
+List<? super SubClazz> subClazzList;
+
+subClazzList = clazzList;
+~~~
+
+Single type parameters work the same way, although [they must be upper-bounded](http://www.angelikalanger.com/GenericsFAQ/FAQSections/TypeParameters.html#FAQ107). If you have multiple type parameters, they are similarly intuitive:
+
+~~~ java
+public class GenericsTest<T extends GenericsTest.A & GenericsTest.B> {
+    T member;
+    
+    interface A {}
+    interface B {}
+    interface C extends A, B {}
+}
+
+A member1 = new GenericsTest<C>().member;
+B member2 = new GenericsTest<C>().member;
+C member3 = new GenericsTest<C>().member;
 ~~~
 
 You can add or remove the type parameters from the return type of an overriding method and it will still compile:
