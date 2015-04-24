@@ -121,7 +121,7 @@ List<? super SubClazz> subClazzList;
 subClazzList = clazzList;
 ~~~
 
-Single type parameters work the same way, although [they must be upper-bounded](http://www.angelikalanger.com/GenericsFAQ/FAQSections/TypeParameters.html#FAQ107). If you have multiple type parameters, they are similarly intuitive:
+Type parameter bounds work the same way, [although they cannot be lower-bounded](http://www.angelikalanger.com/GenericsFAQ/FAQSections/TypeParameters.html#FAQ107). If you have multiple upper bounds on a type parameter, you can upcast to any of them, as expected:
 
 ~~~ java
 public class GenericsTest<T extends GenericsTest.A & GenericsTest.B> {
