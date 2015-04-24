@@ -115,7 +115,9 @@ Java is smart enough that *more* restrictive type bounds are commensurable with 
 ~~~ java
 List<? super Clazz> clazzList;
 List<? super SubClazz> subClazzList;
+~~~
 
+~~~ java
 subClazzList = clazzList;
 ~~~
 
