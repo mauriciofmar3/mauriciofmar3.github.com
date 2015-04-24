@@ -9,7 +9,7 @@ This post is a go-to quick reference for exactly how covariance and contravarian
 Type conversion
 ---------------
 
-Type conversion in Java is **covariant**. That means that if `SubClazz` is a subtype of `Clazz` then a `SubClazz` reference can be cast to a `Clazz`. The other way doesn't work- obviously, right? [Don't tell that to the designers of Dart.](https://www.dartlang.org/articles/why-dart-types/#optimism-on-down-assignments)
+Type conversion in Java is **covariant** ([unlike Dart](https://www.dartlang.org/articles/why-dart-types/#optimism-on-down-assignments)). That means that if `SubClazz` is a subtype of `Clazz` then a `SubClazz` reference can be cast to a `Clazz`.
 
 ~~~ java
 public class Clazz { }
@@ -131,7 +131,9 @@ public class GenericsTest<T extends GenericsTest.A & GenericsTest.B> {
     interface B {}
     interface C extends A, B {}
 }
+~~~
 
+~~~ java
 A member1 = new GenericsTest<C>().member;
 B member2 = new GenericsTest<C>().member;
 C member3 = new GenericsTest<C>().member;
